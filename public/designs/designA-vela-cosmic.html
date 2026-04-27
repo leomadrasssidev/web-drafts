@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vela — Cosmic Liquid Glass</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #03030a;
+    --blue: #4f7dff;
+    --violet: #8b5cf6;
+    --teal: #2dd4bf;
+    --rose: #f43f5e;
+    --text: #eeeeff;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    min-height: 200vh;
+  }
+  /* CANVAS BG */
+  #bgCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(3,3,10,0.4);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .logo {
+    font-weight: 700; font-size: 1.3rem; letter-spacing: -0.03em;
+    background: linear-gradient(120deg, var(--blue), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: rgba(238,238,255,0.4); font-size: 0.85rem; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: rgba(79,125,255,0.12); border: 1px solid rgba(79,125,255,0.35);
+    color: var(--blue); padding: 0.55rem 1.4rem; border-radius: 100px;
+    font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; transition: all 0.25s;
+  }
+  .nav-cta:hover { background: rgba(79,125,255,0.22); box-shadow: 0 0 20px rgba(79,125,255,0.3); }
+  /* HERO */
+  .hero {
+    position: relative; z-index: 10; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 8rem 2rem 4rem;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.35rem 1rem; border-radius: 100px;
+    background: rgba(79,125,255,0.1); border: 1px solid rgba(79,125,255,0.2);
+    font-size: 0.75rem; color: rgba(79,125,255,0.9); font-weight: 500;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .eyebrow-pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+    animation: blink 2.5s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(79,125,255,0.4)} 50%{opacity:0.6;box-shadow:0 0 0 5px rgba(79,125,255,0)} }
+  .hero-title {
+    font-size: clamp(3.2rem, 8vw, 7rem); font-weight: 800;
+    line-height: 1.0; letter-spacing: -0.04em; max-width: 880px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .word-grad {
+    background: linear-gradient(135deg, #a78bfa, #60a5fa, #2dd4bf);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    background-size: 200%; animation: gradShift 5s ease infinite;
+  }
+  @keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
+  .hero-sub {
+    margin-top: 2rem; font-size: 1.05rem; color: rgba(238,238,255,0.4);
+    max-width: 500px; line-height: 1.8; font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; margin-top: 3rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-glow {
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    border: none; color: white; padding: 0.9rem 2.2rem; border-radius: 100px;
+    font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; box-shadow: 0 0 30px rgba(79,125,255,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(79,125,255,0.6); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(238,238,255,0.7); padding: 0.9rem 2.2rem; border-radius: 100px;
+    font-family: 'Outfit', sans-serif; font-size: 0.9rem; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  /* GLASS CARDS */
+  .cards {
+    position: relative; z-index: 10;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; padding: 3rem 4rem 6rem; max-width: 1200px; margin: 0 auto;
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(30px);
+    border-radius: 24px; padding: 2.5rem;
+    transition: transform 0.35s, border-color 0.35s, background 0.35s;
+    cursor: default; animation: fadeUp 0.8s ease both;
+  }
+  .glass-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(79,125,255,0.25);
+    background: rgba(79,125,255,0.05);
+  }
+  .glass-card:nth-child(1) { animation-delay: 0.1s; }
+  .glass-card:nth-child(2) { animation-delay: 0.2s; animation-transform: scale(1.02); }
+  .glass-card:nth-child(3) { animation-delay: 0.3s; }
+  .card-glyph {
+    font-size: 2rem; margin-bottom: 1.2rem;
+    display: inline-block; animation: floatIcon 3s ease-in-out infinite;
+  }
+  .glass-card:nth-child(2) .card-glyph { animation-delay: 0.5s; }
+  .glass-card:nth-child(3) .card-glyph { animation-delay: 1s; }
+  @keyframes floatIcon {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; letter-spacing: -0.02em; }
+  .card-body { font-size: 0.85rem; color: rgba(238,238,255,0.4); line-height: 1.75; }
+  .card-tag {
+    margin-top: 1.5rem; display: inline-block;
+    font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.7rem;
+    border-radius: 100px; background: rgba(79,125,255,0.1); color: rgba(79,125,255,0.9);
+  }
+  /* STATS STRIP */
+  .stats-strip {
+    position: relative; z-index: 10;
+    display: flex; justify-content: center; gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin: 0 4rem;
+  }
+  .sstat {
+    flex: 1; padding: 3rem 2rem; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+  .sstat:last-child { border-right: none; }
+  .sstat-num {
+    font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1;
+  }
+  .sstat-label { font-size: 0.75rem; color: rgba(238,238,255,0.3); margin-top: 0.5rem; font-weight: 400; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<nav>
+  <div class="logo">Vela</div>
+  <ul class="nav-links">
+    <li><a href="#">Platform</a></li><li><a href="#">Integrations</a></li>
+    <li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li>
+  </ul>
+  <button class="nav-cta">Start Free →</button>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow"><div class="eyebrow-pulse"></div>Now in Open Beta</div>
+  <h1 class="hero-title">Navigate the <span class="word-grad">future</span> of technology</h1>
+  <p class="hero-sub">Vela gives ambitious startups a constellation of tools — infrastructure, AI, and analytics — unified under one fluid interface.</p>
+  <div class="hero-btns">
+    <button class="btn-glow">Begin Your Journey →</button>
+    <button class="btn-ghost">Explore Platform</button>
+  </div>
+</section>
+<div class="stats-strip">
+  <div class="sstat"><div class="sstat-num">12ms</div><div class="sstat-label">Global P99 Latency</div></div>
+  <div class="sstat"><div class="sstat-num">99.99%</div><div class="sstat-label">SLA Guarantee</div></div>
+  <div class="sstat"><div class="sstat-num">6,200+</div><div class="sstat-label">Teams Active</div></div>
+  <div class="sstat"><div class="sstat-num">200+</div><div class="sstat-label">Integrations</div></div>
+</div>
+<div class="cards">
+  <div class="glass-card">
+    <div class="card-glyph">🌊</div>
+    <div class="card-title">Fluid Infrastructure</div>
+    <div class="card-body">Compute that breathes with your traffic. Auto-scales in milliseconds, never over-provisions, never throttles.</div>
+    <div class="card-tag">Infrastructure</div>
+  </div>
+  <div class="glass-card" style="border-color:rgba(79,125,255,0.18);background:rgba(79,125,255,0.06)">
+    <div class="card-glyph">🧬</div>
+    <div class="card-title">AI DNA Engine</div>
+    <div class="card-body">Embed intelligence at the core of your product, not the edges. LLM routing, memory, and fine-tuning as primitives.</div>
+    <div class="card-tag" style="background:rgba(139,92,246,0.1);color:rgba(167,139,250,0.9)">AI Native</div>
+  </div>
+  <div class="glass-card">
+    <div class="card-glyph">🔭</div>
+    <div class="card-title">Deep Observability</div>
+    <div class="card-body">See everything. Distributed traces, real-time anomaly detection, and AI-assisted root cause analysis.</div>
+    <div class="card-tag" style="background:rgba(45,212,191,0.1);color:rgba(45,212,191,0.9)">Monitoring</div>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, t = 0;
+const blobs = [
+  { x: 0.2, y: 0.2, r: 0.35, color: [79,125,255], speed: 0.0007, ox: 0, oy: 0 },
+  { x: 0.8, y: 0.7, r: 0.3, color: [139,92,246], speed: 0.0005, ox: 1, oy: 1 },
+  { x: 0.5, y: 0.5, r: 0.25, color: [45,212,191], speed: 0.0009, ox: 2, oy: 2 },
+  { x: 0.1, y: 0.8, r: 0.2, color: [244,63,94], speed: 0.0006, ox: 3, oy: 4 },
+];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  blobs.forEach(b => {
+    const x = (b.x + Math.sin(t * b.speed * 1000 + b.ox) * 0.12) * W;
+    const y = (b.y + Math.cos(t * b.speed * 1000 + b.oy) * 0.1) * H;
+    const r = b.r * Math.min(W,H);
+    const g = ctx.createRadialGradient(x,y,0,x,y,r);
+    g.addColorStop(0, `rgba(${b.color},0.22)`);
+    g.addColorStop(1, `rgba(${b.color},0)`);
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle = g; ctx.filter = 'blur(0px)'; ctx.fill();
+  });
+  t = performance.now();
+  requestAnimationFrame(draw);
+}
+resize(); window.addEventListener('resize', resize); draw();
+</script>
+</body>
+</html>

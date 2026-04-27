@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monograph Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fcfaf5;color:#121212;font-family:Inter,sans-serif}main{width:min(1220px,calc(100% - 2rem));margin:0 auto;padding:1rem 0 3rem}.top{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:1rem 0 2rem;border-bottom:1px solid rgba(18,18,18,.1)}.top h1{margin:0;font-family:Newsreader,serif;font-size:clamp(4rem,8vw,7rem);line-height:.9;letter-spacing:-.05em;max-width:7ch}.top p{max-width:32rem;color:#5b5b5b;line-height:1.9;align-self:end}.grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(130px,auto);gap:1rem;padding-top:1.5rem}.panel{border:1px solid rgba(18,18,18,.1);border-radius:1.6rem;padding:1.1rem;background:#fff}.hero{grid-column:span 7;grid-row:span 2;background:linear-gradient(180deg,#fff,#f5f0e7)}.hero p,.panel span{color:#5d5d5d;line-height:1.8}.hero a{display:inline-block;margin-top:1.2rem;padding:.95rem 1.1rem;border-radius:999px;background:#121212;color:#fff;text-decoration:none;font-weight:700}.tall{grid-column:span 5;grid-row:span 2}.wide{grid-column:span 8}.small{grid-column:span 4}.panel strong{display:block;font-size:1.15rem;margin-bottom:.35rem}@media(max-width:900px){.top,.grid{grid-template-columns:1fr}.hero,.tall,.wide,.small{grid-column:auto;grid-row:auto}}
+</style>
+</head>
+<body>
+<main>
+  <section class="top">
+    <h1>Make the startup feel like a monograph, not a launch page.</h1>
+    <p>Monograph Grid is cleaner, quieter, and more art-directed than a normal tech site. It balances editorial seriousness with a modular product surface.</p>
+  </section>
+  <section class="grid">
+    <article class="panel hero"><strong>Central claim</strong><p>This startup treats product, market, and brand as one designed thesis. The grid makes it feel structured; the typography makes it feel considered.</p><a href="#">Open monograph</a></article>
+    <article class="panel tall"><strong>Why it stands out</strong><span>It has cultural confidence without becoming a fashion site, and product discipline without becoming bland enterprise.</span></article>
+    <article class="panel small"><strong>Best fit</strong><span>Research tools, premium B2B, thoughtful AI, sophisticated founder-led software.</span></article>
+    <article class="panel small"><strong>Reading mode</strong><span>Browse panels like a publication spread.</span></article>
+    <article class="panel wide"><strong>Structural difference</strong><span>More like a designed editorial system than a standard hero plus features stack.</span></article>
+  </section>
+</main>
+</body>
+</html>

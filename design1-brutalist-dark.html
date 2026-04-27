@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusCore — Design 1: Brutalist Dark</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ede6;
+    --acid: #c8ff00;
+    --red: #ff2d2d;
+    --grid: rgba(200,255,0,0.06);
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* GRID BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid rgba(200,255,0,0.2);
+    backdrop-filter: blur(12px);
+    background: rgba(10,10,10,0.7);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: var(--acid);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(240,237,230,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--acid); }
+
+  .nav-cta {
+    background: var(--acid);
+    color: var(--black);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    transition: transform 0.1s, box-shadow 0.2s;
+  }
+
+  .nav-cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--red);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acid);
+    border: 1px solid var(--acid);
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 2rem;
+    width: fit-content;
+    animation: fadeSlideUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    max-width: 900px;
+    animation: fadeSlideUp 0.6s 0.1s ease both;
+  }
+
+  .hero-title .glitch {
+    position: relative;
+    display: inline-block;
+    color: var(--acid);
+    animation: glitch 4s infinite;
+  }
+
+  .hero-title .glitch::before,
+  .hero-title .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+  }
+
+  .hero-title .glitch::before {
+    color: var(--red);
+    animation: glitch-before 4s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  }
+
+  .hero-title .glitch::after {
+    color: #00e5ff;
+    animation: glitch-after 4s infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  }
+
+  @keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-3px, 1px); }
+    94% { transform: translate(3px, -1px); }
+    96% { transform: translate(-1px, 2px); }
+  }
+
+  @keyframes glitch-before {
+    0%, 90%, 100% { transform: translate(0); opacity: 0; }
+    92% { transform: translate(4px, -2px); opacity: 0.8; }
+    94% { transform: translate(-2px, 1px); opacity: 0.8; }
+    96% { transform: translate(0); opacity: 0; }
+  }
+
+  @keyframes glitch-after {
+    0%, 91%, 100% { transform: translate(0); opacity: 0; }
+    93% { transform: translate(-3px, 1px); opacity: 0.8; }
+    95% { transform: translate(2px, -1px); opacity: 0.8; }
+    97% { transform: translate(0); opacity: 0; }
+  }
+
+  .hero-sub {
+    margin-top: 2.5rem;
+    font-size: 0.95rem;
+    color: rgba(240,237,230,0.45);
+    max-width: 460px;
+    line-height: 1.8;
+    animation: fadeSlideUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    align-items: center;
+    animation: fadeSlideUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--acid);
+    color: var(--black);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    position: relative;
+    transition: transform 0.15s;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--acid);
+    transform: translate(5px, 5px);
+    transition: transform 0.15s;
+  }
+
+  .btn-primary:hover { transform: translate(-2px,-2px); }
+  .btn-primary:hover::after { transform: translate(7px, 7px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(240,237,230,0.2);
+    padding: 1rem 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--acid); color: var(--acid); }
+
+  /* TICKER */
+  .ticker-wrap {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    border-top: 1px solid rgba(200,255,0,0.15);
+    overflow: hidden;
+    padding: 0.8rem 0;
+    background: rgba(200,255,0,0.03);
+  }
+
+  .ticker {
+    display: flex;
+    gap: 4rem;
+    animation: ticker 20s linear infinite;
+    width: max-content;
+  }
+
+  .ticker span {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: rgba(200,255,0,0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ticker span::before { content: '▶ '; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* STAT ROW */
+  .stats {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(200,255,0,0.1);
+    border-bottom: 1px solid rgba(200,255,0,0.1);
+  }
+
+  .stat {
+    padding: 3rem;
+    border-right: 1px solid rgba(200,255,0,0.1);
+    transition: background 0.3s;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat:hover { background: rgba(200,255,0,0.04); }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--acid);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stat-label {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.35);
+  }
+
+  /* SERVICES */
+  .services {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acid);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(200,255,0,0.1);
+    border: 1px solid rgba(200,255,0,0.1);
+  }
+
+  .service-card {
+    background: var(--black);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: crosshair;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--acid);
+    transition: height 0.3s ease;
+  }
+
+  .service-card:hover { background: rgba(200,255,0,0.04); }
+  .service-card:hover::before { height: 100%; }
+
+  .service-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(200,255,0,0.3);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    color: rgba(240,237,230,0.4);
+    line-height: 1.8;
+  }
+
+  .service-arrow {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acid);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  /* CONTACT STRIP */
+  .contact-strip {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 3rem;
+    border-top: 1px solid rgba(200,255,0,0.1);
+    background: rgba(200,255,0,0.02);
+  }
+
+  .contact-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .contact-heading em {
+    color: var(--acid);
+    font-style: normal;
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* CURSOR FOLLOWER */
+  #cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--acid);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s, width 0.2s, height 0.2s;
+  }
+
+  #cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(200,255,0,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s, width 0.2s, height 0.2s;
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <div class="logo">NexusCore</div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <button class="nav-cta">Launch App</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Est. 2024 — Building the Future</div>
+  <h1 class="hero-title">
+    We Build<br>
+    <span class="glitch" data-text="Radical">Radical</span><br>
+    Tech.
+  </h1>
+  <p class="hero-sub">
+    Startups don't need polished agencies. They need a team that ships fast, breaks things, and rewires the rules of what's possible.
+  </p>
+  <div class="hero-actions">
+    <button class="btn-primary">Start a Project</button>
+    <button class="btn-ghost">View Work →</button>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>AI Infrastructure</span>
+      <span>Cloud Architecture</span>
+      <span>Product Strategy</span>
+      <span>Dev Acceleration</span>
+      <span>Data Engineering</span>
+      <span>Web3 Systems</span>
+      <span>AI Infrastructure</span>
+      <span>Cloud Architecture</span>
+      <span>Product Strategy</span>
+      <span>Dev Acceleration</span>
+      <span>Data Engineering</span>
+      <span>Web3 Systems</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">140+</div>
+    <div class="stat-label">Startups Launched</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$2.1B</div>
+    <div class="stat-label">Client Valuation</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">98%</div>
+    <div class="stat-label">Retention Rate</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">12 wk</div>
+    <div class="stat-label">Avg. Launch Time</div>
+  </div>
+</div>
+
+<section class="services">
+  <div class="section-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <div class="section-title">Core Services</div>
+    </div>
+  </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">AI & Automation</div>
+      <div class="service-desc">LLM pipelines, model fine-tuning, and intelligent automation that transforms your workflow from day one.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Cloud Infrastructure</div>
+      <div class="service-desc">Resilient, scalable systems architected for growth — from MVP to millions of users.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Product Engineering</div>
+      <div class="service-desc">Full-stack teams embedded in your startup, building the features that drive real traction.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Data Platform</div>
+      <div class="service-desc">Real-time analytics, data warehouses, and decision intelligence at the speed of your business.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Security & DevSecOps</div>
+      <div class="service-desc">Zero-trust architecture and continuous security monitoring built into your delivery pipeline.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Growth Engineering</div>
+      <div class="service-desc">A/B testing frameworks, conversion funnels, and data-driven growth systems wired for scale.</div>
+      <div class="service-arrow">Explore →</div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-strip">
+  <div class="contact-heading">Ready to <em>ship</em><br>something bold?</div>
+  <button class="btn-primary" style="padding: 1.2rem 3rem; font-size: 0.85rem;">Let's Talk →</button>
+</div>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  // Counter animation
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const text = el.textContent;
+    const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+    const suffix = text.replace(/[0-9.]/g, '');
+    let start = null;
+    const duration = 1800;
+
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        function step(ts) {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = num <= 100 ? Math.round(ease * num) : (ease * num).toFixed(1);
+          el.textContent = val + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+    });
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>

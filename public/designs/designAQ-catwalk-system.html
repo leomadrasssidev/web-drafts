@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catwalk System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&family=Prata&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#121212;color:#f5f2eb;font-family:Sora,sans-serif;overflow-x:hidden}main{width:min(1240px,calc(100% - 2rem));margin:0 auto;padding:1rem 0 3rem}.runway{min-height:90vh;display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}.left{position:relative;padding:2rem 0}.left:before{content:"";position:absolute;left:10%;right:10%;top:52%;height:1px;background:rgba(255,255,255,.12)}.left:after{content:"";position:absolute;left:18%;right:18%;bottom:16%;height:30%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.03));border-radius:50%}
+.left h1{margin:0;font-family:Prata,serif;font-size:clamp(3.8rem,8vw,6.8rem);line-height:.9;letter-spacing:-.05em;max-width:8ch}.left p{max-width:32rem;color:#ccc0b5;line-height:1.9;margin-top:1.2rem}.model{position:absolute;right:14%;top:14%;width:160px;height:440px;border-radius:100px;background:linear-gradient(180deg,#2f2f2f,#1a1a1a);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.panel{padding:1rem;border:1px solid rgba(255,255,255,.08);border-radius:1.8rem;background:rgba(255,255,255,.03)}.panel strong{display:block;margin-bottom:.35rem;font-size:1.1rem}.panel span{display:block;color:#cdbfb4;line-height:1.75}.list{display:grid;gap:.9rem;margin-top:1rem}.row{padding:.95rem;border-radius:1rem;background:rgba(255,255,255,.03)}.cta{display:inline-block;margin-top:1.4rem;padding:1rem 1.1rem;border-radius:999px;background:#f5f2eb;color:#171717;text-decoration:none;font-weight:700}@media(max-width:900px){.runway{grid-template-columns:1fr}.model{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <section class="runway">
+    <div class="left">
+      <h1>A tech brand with runway-level confidence.</h1>
+      <p>Catwalk System is not a fashion parody. It borrows the staging discipline of a runway show: long sightlines, one focal proposition, and a sense of public reveal.</p>
+      <a class="cta" href="#">See the reveal</a>
+      <div class="model"></div>
+    </div>
+    <aside class="panel">
+      <strong>Where it works</strong>
+      <span>Strong for premium consumer software, cultural-tech startups, AI products with design ambition, and companies where brand theater can earn attention.</span>
+      <div class="list">
+        <div class="row">Single dramatic focal object instead of feature stacks</div>
+        <div class="row">Clean side dossier for proof and framing</div>
+        <div class="row">Feels intentional, premium, and a little dangerous</div>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radial Nav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#111317;color:#f7f7fa;font-family:Sora,sans-serif;display:grid;place-items:center;padding:1rem;overflow:hidden}body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at center,rgba(131,140,255,.16),transparent 28%),radial-gradient(circle at 75% 25%,rgba(255,169,92,.12),transparent 22%);pointer-events:none}
+.stage{width:min(1080px,100%);display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
+.wheel-wrap{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.wheel{width:min(72vw,640px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.1);position:relative}
+.wheel:before,.wheel:after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.08)}.wheel:after{inset:30%}
+.hub{position:absolute;inset:36%;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7f8cff,#ff9d5c);color:#13151b;font-weight:800;text-align:center;padding:1rem}
+.arm{position:absolute;left:50%;top:50%;transform-origin:0 0;width:34%;height:1px;background:rgba(255,255,255,.12)}
+.arm a{position:absolute;right:-22px;top:-22px;width:120px;min-height:120px;border-radius:50%;display:grid;place-items:center;text-align:center;padding:1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#f7f7fa;text-decoration:none;font-size:.88rem;line-height:1.5}
+.a1{transform:rotate(-90deg)}.a2{transform:rotate(-18deg)}.a3{transform:rotate(54deg)}.a4{transform:rotate(126deg)}.a5{transform:rotate(198deg)}
+.copy h1{margin:0;font-size:clamp(2.8rem,5vw,4.6rem);line-height:.96;letter-spacing:-.05em}
+.copy p{color:#bec4d4;line-height:1.85;max-width:28rem}
+.copy .btn{display:inline-block;margin-top:1.6rem;padding:1rem 1.2rem;border-radius:999px;background:#f7f7fa;color:#14171d;text-decoration:none;font-weight:800}
+@media(max-width:980px){.stage{grid-template-columns:1fr}.wheel{width:min(90vw,640px)}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="wheel-wrap">
+    <div class="wheel">
+      <div class="arm a1"><a href="#">Vision</a></div>
+      <div class="arm a2"><a href="#">Product</a></div>
+      <div class="arm a3"><a href="#">Traction</a></div>
+      <div class="arm a4"><a href="#">System</a></div>
+      <div class="arm a5"><a href="#">Story</a></div>
+      <div class="hub">Startup<br>Core</div>
+    </div>
+  </div>
+  <div class="copy">
+    <h1>A homepage organized like a strategic orbit.</h1>
+    <p>This is a radial navigation concept. Instead of reading top to bottom, the visitor explores the startup through clustered thought domains around a central thesis. It is weird in a useful way.</p>
+    <p>Best for frontier-tech, research labs, strategy-heavy founders, and companies that want to feel less like a website and more like an idea map.</p>
+    <a class="btn" href="#">Open core</a>
+  </div>
+</div>
+</body>
+</html>

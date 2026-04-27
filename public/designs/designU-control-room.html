@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#071018;color:#eef7fb;font-family:Manrope,sans-serif;height:100vh;overflow:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 15% 20%,rgba(88,255,214,.12),transparent 22%),radial-gradient(circle at 88% 80%,rgba(255,133,92,.1),transparent 24%)}
+.app{display:grid;grid-template-columns:260px 1fr 340px;height:100vh}
+.sidebar{border-right:1px solid rgba(255,255,255,.08);padding:1.1rem;background:rgba(255,255,255,.02)}
+.brand{font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.4rem}
+.menu{display:grid;gap:.55rem}
+.menu button,.chip{font:inherit;border:0;text-align:left;padding:.9rem 1rem;border-radius:1rem;background:rgba(255,255,255,.03);color:#c1d3dd;cursor:pointer}
+.menu button.active{background:linear-gradient(135deg,rgba(88,255,214,.18),rgba(88,255,214,.08));color:#fff}
+.sidebar small,.right small{display:block;font-family:"IBM Plex Mono",monospace;color:#7f98a4;text-transform:uppercase;letter-spacing:.14em;margin:1.2rem 0 .7rem}
+.center{padding:1.1rem;display:grid;grid-template-rows:auto 1fr auto;gap:1rem}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.topbar h1{margin:0;font-size:1.9rem}
+.topbar p{margin:.35rem 0 0;color:#9fb2bc}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.actions button{font:inherit;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#eef7fb;padding:.8rem 1rem;border-radius:999px}
+.actions .primary{background:#58ffd6;color:#051116;border-color:transparent;font-weight:800}
+.main-grid{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:1fr 1fr;gap:1rem;min-height:0}
+.panel{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:1.4rem;padding:1rem;min-height:0;overflow:hidden}
+.panel h2{margin:0 0 .35rem;font-size:1.05rem}.panel p{margin:0;color:#9fb2bc;line-height:1.7}
+.big{grid-row:span 2;display:grid;grid-template-rows:auto 1fr auto}
+.board{position:relative;border-radius:1.1rem;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));margin-top:1rem;overflow:hidden}
+.board:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:46px 46px}
+.nodes{position:absolute;inset:0}
+.node{position:absolute;padding:.55rem .7rem;border-radius:.9rem;background:rgba(7,16,24,.8);border:1px solid rgba(255,255,255,.1);font-size:.84rem}
+.n1{top:16%;left:10%}.n2{top:34%;right:13%}.n3{bottom:28%;left:24%}.n4{bottom:12%;right:22%}
+.line{position:absolute;height:2px;background:linear-gradient(90deg,rgba(88,255,214,.2),rgba(88,255,214,.9));transform-origin:left center}
+.l1{top:23%;left:25%;width:42%;transform:rotate(10deg)}.l2{top:45%;left:22%;width:27%;transform:rotate(42deg)}.l3{bottom:23%;left:40%;width:28%;transform:rotate(-9deg)}
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+.metric{padding:.9rem;border-radius:1rem;background:rgba(255,255,255,.03)}.metric strong{display:block;font-size:1.5rem}
+.feed{display:grid;gap:.8rem;margin-top:1rem}
+.event{padding:.8rem .9rem;border-left:2px solid #58ffd6;background:rgba(255,255,255,.025);border-radius:0 1rem 1rem 0}
+.right{border-left:1px solid rgba(255,255,255,.08);padding:1.1rem;background:rgba(255,255,255,.02);overflow:auto}
+.task{padding:1rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:.8rem}
+.task strong{display:block;margin-bottom:.35rem}.task span{color:#a1b5bf;line-height:1.7}
+.composer{display:flex;gap:.7rem;align-items:center;padding:1rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:1.2rem}
+.composer input{flex:1;background:transparent;border:0;color:#eef7fb;font:inherit;outline:none}
+@media(max-width:1100px){body{height:auto;overflow:auto}.app{grid-template-columns:1fr;height:auto}.sidebar,.right{border:0}.main-grid{grid-template-columns:1fr}.big{grid-row:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">Control Room</div>
+    <small>Modes</small>
+    <div class="menu">
+      <button class="active">Founder cockpit</button>
+      <button>Market pulse</button>
+      <button>Investor pack</button>
+      <button>Launch timeline</button>
+      <button>System map</button>
+    </div>
+    <small>Snapshot</small>
+    <div class="chip">12 day startup sprint</div>
+    <div class="chip">Realtime signal design</div>
+    <div class="chip">AI venture operator</div>
+  </aside>
+  <main class="center">
+    <div class="topbar">
+      <div>
+        <h1>Build the company like a live operating system.</h1>
+        <p>A dashboard-first startup homepage for founders who want interface credibility instead of brochure energy.</p>
+      </div>
+      <div class="actions">
+        <button class="primary">Start sprint</button>
+        <button>Open pitch room</button>
+      </div>
+    </div>
+    <div class="main-grid">
+      <section class="panel big">
+        <div>
+          <h2>System topology</h2>
+          <p>Brand, traction, product, and story are shown as a connected surface instead of separate marketing sections.</p>
+        </div>
+        <div class="board">
+          <div class="nodes">
+            <div class="node n1">Narrative engine</div>
+            <div class="node n2">Investor proof</div>
+            <div class="node n3">Product ritual</div>
+            <div class="node n4">Launch motion</div>
+            <div class="line l1"></div>
+            <div class="line l2"></div>
+            <div class="line l3"></div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><strong>84%</strong><span>clarity gain</span></div>
+          <div class="metric"><strong>4</strong><span>operator layers</span></div>
+          <div class="metric"><strong>1</strong><span>founder surface</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Decision feed</h2>
+        <div class="feed">
+          <div class="event">Tighten category language before ad spend.</div>
+          <div class="event">Prototype needs one trust-heavy metrics frame.</div>
+          <div class="event">Founder story is stronger when product ritual leads.</div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Use case</h2>
+        <p>Best for AI infra, B2B automation, robotics, security, or any startup that wants to look built, not styled.</p>
+      </section>
+    </div>
+    <div class="composer">
+      <input value="Describe the company you want to become in 18 months." aria-label="Prompt">
+      <button class="primary">Run</button>
+    </div>
+  </main>
+  <aside class="right">
+    <small>Founder notes</small>
+    <div class="task"><strong>Structure beats decoration</strong><span>This draft is a software surface first and a landing page second.</span></div>
+    <div class="task"><strong>Interaction pattern</strong><span>Three-column control room with persistent nav, active workspace, and side intelligence rail.</span></div>
+    <div class="task"><strong>Why it is different</strong><span>The user explores a working environment rather than scrolling through stacked hero sections.</span></div>
+  </aside>
+</div>
+</body>
+</html>

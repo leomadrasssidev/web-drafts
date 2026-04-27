@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html{scroll-snap-type:y mandatory}body{margin:0;background:#f4efe8;color:#17130f;font-family:"DM Sans",sans-serif}.panel{min-height:100vh;scroll-snap-align:start;display:grid;grid-template-columns:120px 1fr 1fr}.rail{border-right:1px solid rgba(23,19,15,.12);display:grid;place-items:center;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#8a7c71}.copy,.visual{padding:3rem}.copy{display:grid;align-content:center;border-right:1px solid rgba(23,19,15,.08)}.copy h1,.copy h2{margin:0;font-family:Fraunces,serif;line-height:.92;letter-spacing:-.05em;max-width:8ch}.copy h1{font-size:clamp(4rem,9vw,7rem)}.copy h2{font-size:clamp(3rem,7vw,5rem)}.copy p{max-width:30rem;color:#64574d;line-height:1.9;margin:1.2rem 0 0}.visual{display:grid;place-items:center;position:relative;overflow:hidden}.frame{width:min(88%,560px);aspect-ratio:4/5;border-radius:2rem;border:1px solid rgba(23,19,15,.1);background:rgba(255,255,255,.45);box-shadow:0 26px 70px rgba(80,56,34,.08);position:relative;overflow:hidden}.frame:before{content:"";position:absolute;inset:10% auto auto 10%;width:70%;height:70%;background:radial-gradient(circle,rgba(199,123,74,.25),transparent 68%)}.block{position:absolute;border-radius:1.3rem;border:1px solid rgba(23,19,15,.08);background:rgba(255,255,255,.66)}.b1{left:10%;top:12%;width:34%;height:26%}.b2{right:10%;top:20%;width:40%;height:18%}.b3{left:16%;bottom:12%;width:68%;height:20%}.pulse{position:absolute;left:12%;right:12%;top:50%;height:2px;background:linear-gradient(90deg,transparent,#c77b4a,transparent);animation:slide 3.2s ease-in-out infinite}.dark{background:#17130f;color:#f7efe5}.dark .rail{color:#c0a998;border-color:rgba(255,255,255,.12)}.dark .copy{border-color:rgba(255,255,255,.08)}.dark .copy p{color:#b8a89d}.dark .frame{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}.dark .block{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}.sand{background:#ded0bd}.sand .copy p{color:#5f5146}.cta{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 1.2rem;border-radius:999px;background:#17130f;color:#f7efe5;text-decoration:none;font-weight:700;margin-top:2rem;width:fit-content}.dark .cta{background:#f7efe5;color:#17130f}@keyframes slide{0%,100%{transform:translateX(-8%)}50%{transform:translateX(8%)}}@media(max-width:960px){html{scroll-snap-type:none}.panel{grid-template-columns:1fr}.rail{display:none}.copy{border-right:0}}
+</style>
+</head>
+<body>
+<section class="panel">
+  <div class="rail">Intro</div>
+  <div class="copy">
+    <h1>Tell the startup story in acts, not blocks.</h1>
+    <p>This concept behaves like a cinematic storyboard. Each screen is a chapter, giving the company a narrative build instead of one long generic webpage.</p>
+    <a class="cta" href="#act2">Enter act two</a>
+  </div>
+  <div class="visual">
+    <div class="frame">
+      <div class="block b1"></div><div class="block b2"></div><div class="block b3"></div><div class="pulse"></div>
+    </div>
+  </div>
+</section>
+<section class="panel dark" id="act2">
+  <div class="rail">Proof</div>
+  <div class="copy">
+    <h2>One panel for belief.</h2>
+    <p>Use each full-screen chapter to frame traction, product philosophy, founder ritual, and market timing with more drama than a standard landing page allows.</p>
+  </div>
+  <div class="visual">
+    <div class="frame">
+      <div class="block b2"></div><div class="block b3"></div><div class="pulse"></div>
+    </div>
+  </div>
+</section>
+<section class="panel sand">
+  <div class="rail">Future</div>
+  <div class="copy">
+    <h2>Good for founder myth, premium launches, and story-first tech.</h2>
+    <p>This is a narrative UI pattern, not a dashboard pattern. It is structurally different from a hero-plus-sections homepage and works when atmosphere matters as much as clarity.</p>
+  </div>
+  <div class="visual">
+    <div class="frame">
+      <div class="block b1"></div><div class="block b3"></div><div class="pulse"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

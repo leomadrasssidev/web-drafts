@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1016;color:#eef7fb;font-family:Inter,sans-serif;overflow:hidden}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.toolbar{position:fixed;top:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.7rem;padding:.7rem;border-radius:999px;background:rgba(11,16,22,.75);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);z-index:10}
+.tool{padding:.8rem 1rem;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:.9rem}
+.canvas{position:relative;width:1800px;height:1200px;transform:translate(4vw,8vh)}
+.card{position:absolute;padding:1rem 1.1rem;border-radius:1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);box-shadow:0 26px 70px rgba(0,0,0,.22)}
+.hero{left:80px;top:80px;width:460px;background:linear-gradient(135deg,rgba(89,126,255,.18),rgba(255,119,92,.12))}
+.hero h1{margin:0;font-size:clamp(2.8rem,5vw,4.8rem);line-height:.94;letter-spacing:-.05em}
+.hero p,.note p,.stats p{color:#b8c7d2;line-height:1.8}
+.cta{display:inline-block;margin-top:1.2rem;padding:.95rem 1.1rem;border-radius:999px;background:#eef7fb;color:#10151d;text-decoration:none;font-weight:800}
+.note{width:260px}.note strong,.stats strong,.window strong{display:block;margin-bottom:.35rem}
+.n1{left:620px;top:110px}.n2{left:990px;top:320px}.n3{left:420px;top:610px}.n4{left:1220px;top:90px}
+.window{left:760px;top:620px;width:520px;min-height:280px}
+.windowbar{display:flex;gap:.4rem;margin-bottom:1rem}.dot{width:.8rem;height:.8rem;border-radius:50%;background:#ff7d5c}.dot:nth-child(2){background:#ffd45c}.dot:nth-child(3){background:#6effc8}
+.window pre{margin:0;font-family:"JetBrains Mono",monospace;color:#8fead5;line-height:1.8;white-space:pre-wrap}
+.stats{left:1290px;top:470px;width:280px}
+.metric{padding:.8rem 0;border-top:1px solid rgba(255,255,255,.08)}.metric b{display:block;font-size:1.5rem}
+.line{position:absolute;height:2px;background:linear-gradient(90deg,rgba(89,126,255,.2),rgba(89,126,255,.8));transform-origin:left center}
+.l1{left:525px;top:250px;width:170px;transform:rotate(-6deg)}.l2{left:860px;top:255px;width:170px;transform:rotate(24deg)}.l3{left:560px;top:560px;width:240px;transform:rotate(14deg)}.l4{left:1260px;top:300px;width:150px;transform:rotate(90deg)}
+.hint{position:fixed;right:1rem;bottom:1rem;padding:1rem 1.1rem;border-radius:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#b8c7d2;max-width:260px}
+@media(max-width:900px){body{overflow:auto}.canvas{transform:none;width:100%;height:auto;padding:5rem 1rem 2rem;display:grid;gap:1rem}.card,.line{position:static;width:auto}.toolbar{left:1rem;right:1rem;transform:none;overflow:auto}.window,.note,.stats,.hero{width:auto}}
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="tool">Vision</div>
+    <div class="tool">Product</div>
+    <div class="tool">Signal</div>
+    <div class="tool">Investor Story</div>
+  </div>
+  <div class="canvas">
+    <section class="card hero">
+      <h1>A startup homepage as an infinite whiteboard.</h1>
+      <p>Instead of scroll-first browsing, visitors explore a spatial map of the company. It feels like peeking inside strategy rather than consuming marketing.</p>
+      <a class="cta" href="#">Enter canvas</a>
+    </section>
+    <div class="line l1"></div><div class="line l2"></div><div class="line l3"></div><div class="line l4"></div>
+    <section class="card note n1"><strong>Category idea</strong><p>Cluster thoughts visually so the company feels alive, unfinished, and worth exploring.</p></section>
+    <section class="card note n2"><strong>Good fit</strong><p>Research labs, frontier AI, venture studios, and products that benefit from looking like a living system map.</p></section>
+    <section class="card note n3"><strong>Why it stands out</strong><p>The whole interaction model is spatial, not page-based.</p></section>
+    <section class="card note n4"><strong>Founder signal</strong><p>This feels like serious work in progress, not a polished brochure pretending to be a company.</p></section>
+    <section class="card window">
+      <div class="windowbar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <strong>Operator thread</strong>
+      <pre>map.signal()
+locate category edge
+compress pitch into one line
+design proof loops
+turn homepage into a working surface</pre>
+    </section>
+    <section class="card stats">
+      <strong>Scan points</strong>
+      <div class="metric"><b>07</b><p>idea nodes</p></div>
+      <div class="metric"><b>01</b><p>spatial interface</p></div>
+      <div class="metric"><b>high</b><p>curiosity factor</p></div>
+    </section>
+  </div>
+  <div class="hint">This pattern is closer to Figma or Miro than a normal website.</div>
+</body>
+</html>

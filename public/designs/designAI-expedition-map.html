@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expedition Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e8decf;color:#1b1713;font-family:Outfit,sans-serif;min-height:100vh;display:grid;place-items:center;padding:1rem}body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,rgba(91,143,119,.18),transparent 22%),radial-gradient(circle at 80% 75%,rgba(191,126,84,.16),transparent 24%);pointer-events:none}
+.map{width:min(1180px,100%);padding:1.2rem;border-radius:2rem;background:#f5eee1;border:1px solid rgba(27,23,19,.12);box-shadow:0 28px 70px rgba(66,46,26,.12)}
+.top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.top h1{margin:0;font-family:Marcellus,serif;font-size:clamp(3rem,6vw,5rem);line-height:.94;letter-spacing:-.04em;max-width:10ch}
+.top p{max-width:32rem;color:#64584d;line-height:1.9}
+.field{margin-top:1.2rem;position:relative;min-height:560px;border-radius:1.5rem;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.25));overflow:hidden;border:1px solid rgba(27,23,19,.08)}
+.route{position:absolute;left:12%;top:18%;width:66%;height:54%;border:3px dashed rgba(27,23,19,.34);border-color:rgba(27,23,19,.34) transparent transparent transparent;border-radius:50%;transform:rotate(18deg)}
+.pin{position:absolute;padding:.85rem 1rem;border-radius:999px;background:#fffaf2;border:1px solid rgba(27,23,19,.12);box-shadow:0 16px 34px rgba(66,46,26,.08)}
+.p1{left:10%;top:16%}.p2{left:48%;top:24%}.p3{right:14%;top:44%}.p4{left:34%;bottom:16%}
+.legend{position:absolute;right:1rem;bottom:1rem;width:280px;padding:1rem;border-radius:1.2rem;background:rgba(255,250,242,.9);border:1px solid rgba(27,23,19,.1)}.legend strong{display:block;margin-bottom:.35rem}.legend span{color:#64584d;line-height:1.7}
+@media(max-width:900px){.field{min-height:700px}.pin{max-width:220px}}
+</style>
+</head>
+<body>
+<main class="map">
+  <div class="top">
+    <div><h1>Map the startup like an expedition.</h1></div>
+    <p>This concept treats the company journey as terrain. Visitors move between outposts like vision, traction, product, and market instead of reading a normal page. It feels exploratory and mission-driven.</p>
+  </div>
+  <section class="field">
+    <div class="route"></div>
+    <div class="pin p1">Base Camp / Founder Thesis</div>
+    <div class="pin p2">Signal Ridge / Category Edge</div>
+    <div class="pin p3">Proof Valley / Product Traction</div>
+    <div class="pin p4">Launch Point / Market Entry</div>
+    <div class="legend"><strong>Different UX</strong><span>The startup is framed as a route to be navigated. Strong for ambitious, mission-heavy brands that want more romance and direction than a standard SaaS site.</span></div>
+  </section>
+</main>
+</body>
+</html>

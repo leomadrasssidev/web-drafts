@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magazine Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#efe7db;color:#17130f;font-family:Inter,sans-serif;padding:1rem}.cover{max-width:1180px;margin:0 auto;min-height:92vh;border:1px solid rgba(23,19,15,.12);background:#f7f1e8;display:grid;grid-template-columns:1fr .95fr;overflow:hidden}.mast{padding:2rem;border-right:1px solid rgba(23,19,15,.08);display:grid;align-content:space-between}.mast h1{margin:0;font-family:"Playfair Display",serif;font-size:clamp(4rem,8vw,7rem);line-height:.88;letter-spacing:-.05em;max-width:8ch}.mast p{max-width:30rem;color:#5a4e43;line-height:1.9}.stories{padding:2rem;display:grid;gap:1rem;align-content:start}.story{padding:1rem;border-top:1px solid rgba(23,19,15,.12)}.story strong{display:block;font-size:1.5rem;margin-bottom:.35rem}.story span{color:#62564b;line-height:1.7}.kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;color:#9c5d3e}.cta{display:inline-block;padding:1rem 1.1rem;border-radius:999px;background:#17130f;color:#f7f1e8;text-decoration:none;font-weight:700}@media(max-width:900px){.cover{grid-template-columns:1fr}.mast{border-right:0;border-bottom:1px solid rgba(23,19,15,.08)}}
+</style>
+</head>
+<body>
+<main class="cover">
+  <section class="mast">
+    <div>
+      <div class="kicker">Special issue / startup futures</div>
+      <h1>What if the company launched like a magazine cover story?</h1>
+      <p>This pattern frames the startup as cultural editorial, not just software. It works when the founder wants opinion, taste, and public narrative to matter as much as product features.</p>
+    </div>
+    <div><a class="cta" href="#">Read cover story</a></div>
+  </section>
+  <aside class="stories">
+    <div class="story"><strong>The category claim</strong><span>Big cover-line framing instead of a normal headline.</span></div>
+    <div class="story"><strong>The founder angle</strong><span>The startup appears as a featured story worth reading, not a service worth skimming.</span></div>
+    <div class="story"><strong>Best fit</strong><span>Creative tech, media products, premium consumer software, tastemaker founders, cultural AI brands.</span></div>
+  </aside>
+</main>
+</body>
+</html>

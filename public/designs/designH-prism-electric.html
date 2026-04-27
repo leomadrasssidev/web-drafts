@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prism — Electric Blue SaaS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#060b14;
+    --bg2:#0b1120;
+    --blue:#2563eb;
+    --blue-light:#60a5fa;
+    --cyan:#06b6d4;
+    --text:#e8f0fe;
+    --mid:rgba(232,240,254,0.4);
+    --border:rgba(37,99,235,0.15);
+    --glass:rgba(37,99,235,0.06);
+  }
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 50% at 0% 50%,rgba(37,99,235,0.1),transparent),
+      radial-gradient(ellipse 50% 70% at 100% 0%,rgba(6,182,212,0.07),transparent);
+  }
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.2rem 4rem;
+    background:rgba(6,11,20,0.7);backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{
+    display:flex;align-items:center;gap:0.5rem;
+    font-weight:800;font-size:1.25rem;letter-spacing:-0.04em;
+  }
+  .logo-prism{
+    width:20px;height:20px;
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+    clip-path:polygon(50% 0%,100% 100%,0% 100%);
+  }
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{text-decoration:none;font-size:0.82rem;color:var(--mid);font-weight:400;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .btn-nav{
+    background:var(--blue);color:white;border:none;
+    padding:0.55rem 1.4rem;border-radius:8px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;
+    transition:filter 0.2s,box-shadow 0.2s;
+  }
+  .btn-nav:hover{filter:brightness(1.15);box-shadow:0 0 20px rgba(37,99,235,0.4);}
+
+  /* HERO */
+  .hero{
+    position:relative;z-index:10;min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:9rem 4rem 5rem;
+    overflow:hidden;
+  }
+  .hero-pill{
+    display:inline-flex;align-items:center;gap:0.6rem;
+    background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);
+    color:var(--blue-light);font-size:0.75rem;font-weight:600;
+    padding:0.35rem 1rem;border-radius:100px;margin-bottom:2.5rem;width:fit-content;
+    animation:fadeUp 0.7s ease both;
+  }
+  .pill-star{font-size:0.7rem;color:var(--cyan);}
+  h1{
+    font-weight:800;font-size:clamp(3rem,7vw,6.5rem);
+    line-height:0.95;letter-spacing:-0.05em;max-width:800px;
+  }
+  .hero-line{display:block;animation:fadeUp 0.7s ease both;}
+  .hero-line:nth-child(1){animation-delay:0.05s}
+  .hero-line:nth-child(2){animation-delay:0.12s;color:var(--blue-light);}
+  .hero-line:nth-child(3){animation-delay:0.19s;color:rgba(232,240,254,0.25);}
+  .hero-bottom{
+    display:flex;gap:5rem;align-items:flex-end;margin-top:3.5rem;
+    animation:fadeUp 0.7s 0.26s ease both;
+  }
+  .hero-sub{font-size:1rem;color:var(--mid);line-height:1.8;max-width:400px;font-weight:300;}
+  .hero-btns{display:flex;flex-direction:column;gap:0.8rem;}
+  .btn-solid{
+    background:var(--blue);color:white;border:none;
+    padding:0.95rem 2.5rem;border-radius:8px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;
+    box-shadow:0 0 30px rgba(37,99,235,0.35);transition:filter 0.2s,box-shadow 0.2s;
+  }
+  .btn-solid:hover{filter:brightness(1.15);box-shadow:0 0 50px rgba(37,99,235,0.55);}
+  .btn-link{
+    background:transparent;border:none;color:var(--mid);
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;cursor:pointer;
+    transition:color 0.2s;padding:0;text-align:left;
+  }
+  .btn-link:hover{color:var(--blue-light);}
+
+  /* HERO GRAPH VISUAL */
+  .hero-graph{
+    position:absolute;right:0;top:50%;transform:translateY(-50%);
+    width:55%;height:70%;
+    animation:fadeIn 1.2s 0.5s ease both;opacity:0;
+  }
+  #graphCanvas{width:100%;height:100%;}
+
+  /* STATS */
+  .stats-row{
+    position:relative;z-index:10;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--border);
+    max-width:1200px;margin:0 auto;width:100%;
+  }
+  .stat{
+    padding:2.5rem 3rem;border-right:1px solid var(--border);
+    transition:background 0.3s;
+  }
+  .stat:last-child{border-right:none;}
+  .stat:hover{background:var(--glass);}
+  .stat-n{font-size:2.5rem;font-weight:800;letter-spacing:-0.05em;line-height:1;color:var(--text);}
+  .stat-n .unit{font-size:1rem;color:var(--blue-light);margin-left:2px;}
+  .stat-label{font-size:0.72rem;color:var(--mid);margin-top:0.4rem;font-weight:400;}
+  .stat-delta{font-size:0.7rem;color:#4ade80;margin-top:0.3rem;}
+
+  /* FEATURES */
+  .feature-section{
+    position:relative;z-index:10;
+    padding:6rem 4rem;max-width:1200px;margin:0 auto;
+  }
+  .feat-header{
+    display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;
+  }
+  .feat-title{font-weight:800;font-size:2.2rem;letter-spacing:-0.04em;line-height:1.1;}
+  .feat-title em{font-style:italic;font-weight:300;color:var(--blue-light);}
+  .feat-link{font-size:0.82rem;color:var(--blue-light);background:none;border:none;cursor:pointer;}
+  .feat-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr;
+    grid-template-rows:auto auto;gap:1.5rem;
+  }
+  .feat-card{
+    background:var(--glass);border:1px solid var(--border);
+    border-radius:16px;padding:2rem;
+    transition:transform 0.3s,border-color 0.3s;cursor:default;
+  }
+  .feat-card:hover{transform:translateY(-4px);border-color:rgba(37,99,235,0.35);}
+  .feat-card.big{grid-row:span 2;display:flex;flex-direction:column;}
+  .fc-icon{font-size:1.5rem;margin-bottom:1.2rem;}
+  .fc-title{font-weight:700;font-size:1rem;margin-bottom:0.6rem;letter-spacing:-0.02em;}
+  .fc-body{font-size:0.82rem;color:var(--mid);line-height:1.7;}
+  .fc-num{
+    margin-top:auto;padding-top:2rem;
+    font-size:3.5rem;font-weight:800;letter-spacing:-0.06em;color:var(--blue-light);line-height:1;
+  }
+  .fc-num-label{font-size:0.7rem;color:var(--mid);margin-top:0.3rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><div class="logo-prism"></div>Prism</div>
+  <ul class="nav-links">
+    <li><a href="#">Product</a></li><li><a href="#">Analytics</a></li>
+    <li><a href="#">Enterprise</a></li><li><a href="#">Pricing</a></li>
+  </ul>
+  <button class="btn-nav">Start Free →</button>
+</nav>
+<section class="hero">
+  <div class="hero-pill"><span class="pill-star">✦</span>Introducing Prism Intelligence 2.0</div>
+  <h1>
+    <span class="hero-line">See your</span>
+    <span class="hero-line">product</span>
+    <span class="hero-line">clearly.</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-sub">Prism refracts your data into clarity. Real-time analytics, predictive modeling, and decision intelligence for the founders who need to move fast.</p>
+    <div class="hero-btns">
+      <button class="btn-solid">Get Full Access →</button>
+      <button class="btn-link">↗ See live demo</button>
+    </div>
+  </div>
+  <div class="hero-graph"><canvas id="graphCanvas"></canvas></div>
+</section>
+<div class="stats-row">
+  <div class="stat"><div class="stat-n">8.4<span class="unit">B</span></div><div class="stat-label">Events Processed Daily</div><div class="stat-delta">↑ 34% MoM</div></div>
+  <div class="stat"><div class="stat-n">4<span class="unit">ms</span></div><div class="stat-label">Real-time Query Latency</div><div class="stat-delta">↓ 60% vs industry avg</div></div>
+  <div class="stat"><div class="stat-n">14k<span class="unit">+</span></div><div class="stat-label">Teams Using Prism</div><div class="stat-delta">↑ 2,100 this month</div></div>
+  <div class="stat"><div class="stat-n">99.9<span class="unit">%</span></div><div class="stat-label">Uptime SLA</div><div class="stat-delta">30-day rolling</div></div>
+</div>
+<div class="feature-section">
+  <div class="feat-header">
+    <div class="feat-title">Everything you need<br>to make <em>better decisions</em></div>
+    <button class="feat-link">See all features →</button>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card big">
+      <div class="fc-icon">📊</div>
+      <div class="fc-title">Real-Time Analytics Engine</div>
+      <div class="fc-body">Stream billions of events through our processing pipeline and query them in real time. No data warehouse setup, no SQL expertise needed — just answers, instantly.</div>
+      <div class="fc-num">4ms<div class="fc-num-label">Avg. query response time</div></div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-icon">🎯</div>
+      <div class="fc-title">Predictive Funnels</div>
+      <div class="fc-body">ML models that forecast conversion 30 days out and flag at-risk segments before they churn.</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-icon">🧪</div>
+      <div class="fc-title">A/B Testing at Scale</div>
+      <div class="fc-body">Run hundreds of experiments simultaneously with automatic statistical significance detection.</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-icon">🔔</div>
+      <div class="fc-title">Anomaly Alerts</div>
+      <div class="fc-body">AI detects unusual patterns in your metrics and delivers actionable alerts — not noise.</div>
+    </div>
+    <div class="feat-card">
+      <div class="fc-icon">🌐</div>
+      <div class="fc-title">Cohort Intelligence</div>
+      <div class="fc-body">Deep cohort analysis with automatic segmentation, retention curves, and lifetime value modeling.</div>
+    </div>
+  </div>
+</div>
+<script>
+const cvs = document.getElementById('graphCanvas');
+const ctx2 = cvs.getContext('2d');
+cvs.width = cvs.offsetWidth * 2; cvs.height = cvs.offsetHeight * 2;
+ctx2.scale(2,2);
+const W = cvs.offsetWidth / 2, H = cvs.offsetHeight / 2;
+const pts1 = [0.1,0.4,0.25,0.3,0.45,0.15,0.55,0.2,0.7,0.08,0.85,0.12,1,0.04];
+const pts2 = [0.1,0.65,0.25,0.55,0.45,0.45,0.55,0.42,0.7,0.35,0.85,0.38,1,0.28];
+function drawPath(pts, color, fill) {
+  ctx2.beginPath();
+  for(let i=0;i<pts.length;i+=2) {
+    const x=pts[i]*W, y=pts[i+1]*H;
+    if(i===0) ctx2.moveTo(x,y); else {
+      const px=pts[i-2]*W,py=pts[i-1]*H;
+      ctx2.bezierCurveTo((px+x)/2,py,(px+x)/2,y,x,y);
+    }
+  }
+  if(fill) {
+    ctx2.lineTo(W,H); ctx2.lineTo(0,H); ctx2.closePath();
+    const g=ctx2.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,fill); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx2.fillStyle=g; ctx2.fill();
+  }
+  ctx2.strokeStyle=color; ctx2.lineWidth=2; ctx2.stroke();
+}
+let prog = 0;
+function animate() {
+  ctx2.clearRect(0,0,W,H);
+  // Grid lines
+  ctx2.strokeStyle='rgba(37,99,235,0.07)'; ctx2.lineWidth=1;
+  for(let i=0;i<=4;i++) { ctx2.beginPath(); ctx2.moveTo(0,H*i/4); ctx2.lineTo(W,H*i/4); ctx2.stroke(); }
+  // Clipping for animation
+  ctx2.save(); ctx2.rect(0,0,W*Math.min(prog,1),H); ctx2.clip();
+  drawPath(pts1,'rgba(37,99,235,0.9)','rgba(37,99,235,0.08)');
+  drawPath(pts2,'rgba(6,182,212,0.7)','rgba(6,182,212,0.05)');
+  ctx2.restore();
+  // Dots
+  if(prog>=1) {
+    [[pts1[pts1.length-2]*W,pts1[pts1.length-1]*H,'#2563eb'],[pts2[pts2.length-2]*W,pts2[pts2.length-1]*H,'#06b6d4']].forEach(([x,y,c])=>{
+      ctx2.beginPath(); ctx2.arc(x,y,5,0,Math.PI*2); ctx2.fillStyle=c; ctx2.fill();
+      ctx2.beginPath(); ctx2.arc(x,y,10,0,Math.PI*2); ctx2.fillStyle=c.replace(')',',0.2)').replace('rgb','rgba'); ctx2.fill();
+    });
+  }
+  if(prog<1.05) { prog+=0.012; requestAnimationFrame(animate); }
+}
+setTimeout(animate, 800);
+</script>
+</body>
+</html>

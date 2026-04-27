@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auction Floor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3ede2;color:#18130e;font-family:Inter,sans-serif}main{width:min(1180px,calc(100% - 2rem));margin:0 auto;padding:1rem 0 3rem}.head{display:grid;grid-template-columns:1fr .9fr;gap:2rem;align-items:end;padding:1rem 0 2rem}.head h1{margin:0;font-family:Fraunces,serif;font-size:clamp(3.4rem,7vw,6.2rem);line-height:.92;letter-spacing:-.05em;max-width:8ch}.head p{color:#605449;line-height:1.9;max-width:32rem}.floor{border:1px solid rgba(24,19,14,.1);border-radius:1.8rem;background:#fbf7f0;overflow:hidden}.board{display:grid;grid-template-columns:160px 1fr 150px 120px;padding:1rem;border-bottom:1px solid rgba(24,19,14,.08);font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#8a7a69}.lot{display:grid;grid-template-columns:160px 1fr 150px 120px;padding:1rem;gap:1rem;border-top:1px solid rgba(24,19,14,.08)}.lot:first-of-type{border-top:0}.lot b{font-size:1rem}.lot span{color:#61564b;line-height:1.7}.bid{justify-self:end;padding:.45rem .7rem;border-radius:999px;background:#18130e;color:#f8f2e8;font-size:.82rem;font-weight:700;height:fit-content}.tail{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}.tail div{padding:1rem;border-top:1px solid rgba(24,19,14,.12);color:#61564b;line-height:1.7}.tail strong{display:block;color:#18130e;font-size:1.7rem;margin-bottom:.35rem}@media(max-width:900px){.head,.board,.lot,.tail{grid-template-columns:1fr}.bid{justify-self:start}}
+</style>
+</head>
+<body>
+<main>
+  <section class="head">
+    <h1>Present the startup like the market is bidding on conviction.</h1>
+    <p>Auction Floor frames the company as a set of high-value lots: thesis, proof, founder signal, and market timing. It feels competitive, economic, and very intentional.</p>
+  </section>
+  <section class="floor">
+    <div class="board"><div>Lot</div><div>Description</div><div>Signal</div><div>Value</div></div>
+    <div class="lot"><div><b>001 / Category</b></div><span>Position the startup as the asset that re-prices the market’s assumptions.</span><div>Strategic scarcity</div><div class="bid">High</div></div>
+    <div class="lot"><div><b>002 / Product</b></div><span>The interface becomes the demonstration that the team already knows what matters.</span><div>Immediate proof</div><div class="bid">Live</div></div>
+    <div class="lot"><div><b>003 / Founder</b></div><span>Leadership is presented like conviction with measurable leverage, not just personality.</span><div>Trust premium</div><div class="bid">Strong</div></div>
+  </section>
+  <section class="tail">
+    <div><strong>01</strong>Different because the site feels market-facing, not brochure-facing.</div>
+    <div><strong>02</strong>Good for fintech, venture products, market platforms, and bold B2B brands.</div>
+    <div><strong>03</strong>Creates a high-stakes tone without needing dark cyber visuals.</div>
+  </section>
+</main>
+</body>
+</html>

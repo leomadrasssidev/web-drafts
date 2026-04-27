@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strata — Deep Indigo 3D</title>
+<link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#060714;
+    --indigo:#4338ca;
+    --indigo-light:#818cf8;
+    --violet:#7c3aed;
+    --fuchsia:#a21caf;
+    --text:#f0f0ff;
+    --mid:rgba(240,240,255,0.4);
+    --border:rgba(99,102,241,0.15);
+  }
+  body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;overflow-x:hidden;cursor:none;}
+
+  /* CURSOR */
+  #cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--indigo-light);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width 0.2s,height 0.2s;}
+  #cursor.hov{width:40px;height:40px;background:rgba(129,140,248,0.2);border:1px solid rgba(129,140,248,0.5);}
+
+  /* BG LAYERS */
+  .bg-layers{position:fixed;inset:0;z-index:0;overflow:hidden;}
+  .layer{position:absolute;border-radius:50%;filter:blur(80px);opacity:0;}
+  .l1{width:900px;height:500px;background:radial-gradient(ellipse,rgba(67,56,202,0.35),transparent 70%);top:-150px;left:-200px;animation:layerIn1 1.5s 0.2s ease forwards, floatL1 20s 1.7s ease-in-out infinite;}
+  .l2{width:700px;height:700px;background:radial-gradient(ellipse,rgba(124,58,237,0.25),transparent 70%);bottom:-100px;right:-100px;animation:layerIn1 1.5s 0.4s ease forwards, floatL2 25s 1.9s ease-in-out infinite;}
+  .l3{width:500px;height:500px;background:radial-gradient(ellipse,rgba(162,28,175,0.15),transparent 70%);top:30%;left:40%;animation:layerIn1 1.5s 0.6s ease forwards, floatL1 18s 2.1s ease-in-out infinite reverse;}
+  @keyframes layerIn1{to{opacity:1}}
+  @keyframes floatL1{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-30px)}66%{transform:translate(-20px,40px)}}
+  @keyframes floatL2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-20px)}}
+
+  /* Grid */
+  .bg-layers::after{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(99,102,241,0.04)1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.04)1px,transparent 1px);
+    background-size:80px 80px;
+  }
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.3rem 4rem;
+    background:rgba(6,7,20,0.5);backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.04em;color:var(--indigo-light);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{text-decoration:none;font-size:0.83rem;color:var(--mid);font-weight:400;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .btn-nav{
+    background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);
+    color:var(--indigo-light);padding:0.55rem 1.4rem;border-radius:100px;
+    font-family:'Manrope',sans-serif;font-size:0.8rem;font-weight:600;cursor:none;
+    transition:all 0.2s;
+  }
+  .btn-nav:hover{background:rgba(99,102,241,0.25);border-color:rgba(99,102,241,0.5);}
+
+  /* HERO */
+  .hero{
+    position:relative;z-index:10;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:9rem 3rem 6rem;perspective:1000px;
+  }
+  .hero-eyebrow{
+    font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--indigo-light);margin-bottom:2.5rem;
+    animation:fadeUp 0.8s ease both;display:flex;align-items:center;gap:0.8rem;
+  }
+  .ey-line{width:30px;height:1px;background:var(--indigo-light);}
+  h1{
+    font-weight:800;font-size:clamp(3rem,8.5vw,7.5rem);
+    line-height:0.96;letter-spacing:-0.05em;max-width:900px;
+    animation:fadeUp 0.8s 0.08s ease both;transform-style:preserve-3d;
+  }
+  .h1-layer{
+    display:block;transform-style:preserve-3d;
+    transition:transform 0.4s ease;
+  }
+  .h1-layer:nth-child(1){animation:fadeUp 0.7s 0.08s ease both;}
+  .h1-layer:nth-child(2){animation:fadeUp 0.7s 0.16s ease both;color:var(--indigo-light);}
+  .h1-layer:nth-child(3){animation:fadeUp 0.7s 0.24s ease both;-webkit-text-stroke:1.5px rgba(129,140,248,0.3);color:transparent;}
+  .hero-sub{
+    margin-top:2rem;font-size:1.05rem;color:var(--mid);max-width:540px;
+    line-height:1.8;font-weight:300;animation:fadeUp 0.8s 0.32s ease both;
+  }
+  .hero-btns{display:flex;gap:1rem;margin-top:3.2rem;animation:fadeUp 0.8s 0.4s ease both;}
+  .btn-solid{
+    background:linear-gradient(135deg,var(--indigo),var(--violet));
+    color:white;border:none;padding:0.95rem 2.5rem;border-radius:12px;
+    font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:700;cursor:none;
+    box-shadow:0 0 30px rgba(67,56,202,0.45);transition:transform 0.2s,box-shadow 0.2s;
+  }
+  .btn-solid:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 50px rgba(67,56,202,0.65);}
+  .btn-glass{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(129,140,248,0.15);
+    color:var(--mid);padding:0.95rem 2.5rem;border-radius:12px;
+    font-family:'Manrope',sans-serif;font-size:0.9rem;cursor:none;
+    transition:background 0.2s,color 0.2s;
+  }
+  .btn-glass:hover{background:rgba(255,255,255,0.07);color:var(--text);}
+
+  /* FLOATING CARDS */
+  .float-section{
+    position:relative;z-index:10;
+    display:flex;justify-content:center;align-items:center;
+    gap:2rem;padding:2rem 4rem 6rem;
+    perspective:1200px;
+  }
+  .fcard{
+    width:220px;padding:1.8rem;border-radius:20px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(129,140,248,0.1);
+    backdrop-filter:blur(20px);
+    transition:transform 0.4s,box-shadow 0.4s;
+  }
+  .fcard:hover{
+    transform:translateY(-12px) rotateX(5deg) !important;
+    box-shadow:0 30px 60px rgba(0,0,0,0.4),0 0 30px rgba(67,56,202,0.2);
+  }
+  .fcard:nth-child(1){transform:translateY(0) rotate(-3deg);animation:floatCard 7s ease-in-out infinite;}
+  .fcard:nth-child(2){transform:translateY(-20px) scale(1.06);animation:floatCard 8s 0.5s ease-in-out infinite;border-color:rgba(129,140,248,0.2);background:rgba(99,102,241,0.08);}
+  .fcard:nth-child(3){transform:translateY(10px) rotate(2deg);animation:floatCard 6s 1s ease-in-out infinite;}
+  .fcard:nth-child(4){transform:translateY(-5px) rotate(-1deg);animation:floatCard 9s 0.3s ease-in-out infinite;}
+  @keyframes floatCard{0%,100%{translateY:0}50%{transform:translateY(-8px)}}
+  .fc-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
+  .fc-title{font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;letter-spacing:-0.02em;}
+  .fc-body{font-size:0.78rem;color:var(--mid);line-height:1.65;}
+  .fc-num{
+    margin-top:1.2rem;font-size:2rem;font-weight:800;
+    background:linear-gradient(135deg,var(--indigo-light),var(--fuchsia));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    letter-spacing:-0.04em;line-height:1;
+  }
+
+  /* FEATURES GRID */
+  .features{
+    position:relative;z-index:10;padding:5rem 4rem;
+    border-top:1px solid var(--border);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto;
+  }
+  .feat{
+    padding:2rem;border-radius:16px;
+    background:rgba(255,255,255,0.02);border:1px solid rgba(129,140,248,0.08);
+    transition:transform 0.3s,border-color 0.3s,background 0.3s;cursor:none;
+  }
+  .feat:hover{transform:translateY(-5px);border-color:rgba(129,140,248,0.2);background:rgba(67,56,202,0.06);}
+  .feat-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;margin-bottom:1.2rem;
+  }
+  .feat-title{font-weight:700;font-size:1rem;margin-bottom:0.6rem;letter-spacing:-0.02em;}
+  .feat-body{font-size:0.83rem;color:var(--mid);line-height:1.7;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div class="bg-layers">
+  <div class="layer l1"></div>
+  <div class="layer l2"></div>
+  <div class="layer l3"></div>
+</div>
+<nav>
+  <div class="logo">Strata</div>
+  <ul class="nav-links">
+    <li><a href="#">Layers</a></li><li><a href="#">Platform</a></li>
+    <li><a href="#">Pricing</a></li><li><a href="#">Docs</a></li>
+  </ul>
+  <button class="btn-nav">Get Access →</button>
+</nav>
+<section class="hero" id="heroEl">
+  <div class="hero-eyebrow"><div class="ey-line"></div>AI-Native Infrastructure<div class="ey-line"></div></div>
+  <h1>
+    <span class="h1-layer">Build in</span>
+    <span class="h1-layer">layers,</span>
+    <span class="h1-layer">scale to infinite.</span>
+  </h1>
+  <p class="hero-sub">Strata is a depth-first platform — from database to edge to AI. Each layer is independent, composable, and battle-tested for production from day one.</p>
+  <div class="hero-btns">
+    <button class="btn-solid">Start Building →</button>
+    <button class="btn-glass">Explore Architecture</button>
+  </div>
+</section>
+<div class="float-section">
+  <div class="fcard">
+    <span class="fc-icon">🗄️</span>
+    <div class="fc-title">Data Layer</div>
+    <div class="fc-body">Edge-replicated Postgres with real-time sync</div>
+    <div class="fc-num">12ms</div>
+  </div>
+  <div class="fcard">
+    <span class="fc-icon">⚡</span>
+    <div class="fc-title">Compute Layer</div>
+    <div class="fc-body">Serverless functions at 60+ edge locations</div>
+    <div class="fc-num">0.8ms</div>
+  </div>
+  <div class="fcard">
+    <span class="fc-icon">🧠</span>
+    <div class="fc-title">AI Layer</div>
+    <div class="fc-body">Inference, embeddings, and agent memory</div>
+    <div class="fc-num">99.9%</div>
+  </div>
+  <div class="fcard">
+    <span class="fc-icon">🔐</span>
+    <div class="fc-title">Auth Layer</div>
+    <div class="fc-body">Zero-trust identity across all your services</div>
+    <div class="fc-num">SOC2</div>
+  </div>
+</div>
+<div class="features">
+  <div class="feat"><div class="feat-icon">🌐</div><div class="feat-title">Global Edge Network</div><div class="feat-body">Deploy to 60+ PoPs worldwide. Static or dynamic — all served from the closest node to your user.</div></div>
+  <div class="feat"><div class="feat-icon">🔄</div><div class="feat-title">Composable Architecture</div><div class="feat-body">Each layer connects via open APIs. Mix and match — use just the pieces you need, skip what you don't.</div></div>
+  <div class="feat"><div class="feat-icon">📈</div><div class="feat-title">Predictive Scaling</div><div class="feat-body">ML models that forecast your traffic 24h ahead and pre-scale before demand arrives. Zero cold starts.</div></div>
+  <div class="feat"><div class="feat-icon">🛡️</div><div class="feat-title">Security by Default</div><div class="feat-body">TLS everywhere, secret rotation, audit logs, and RBAC — on by default on every layer, always.</div></div>
+  <div class="feat"><div class="feat-icon">🤖</div><div class="feat-title">AI Operations</div><div class="feat-body">An AI ops agent monitors your stack 24/7, resolves incidents autonomously, and explains everything in plain English.</div></div>
+  <div class="feat"><div class="feat-icon">💡</div><div class="feat-title">Developer Intelligence</div><div class="feat-body">Code suggestions, schema migrations, and API design — all AI-assisted, context-aware, and never in your way.</div></div>
+</div>
+<script>
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('button,a,.fcard,.feat').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hov'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hov'));
+  });
+  // Parallax hero title
+  const hero = document.getElementById('heroEl');
+  document.addEventListener('mousemove', e => {
+    const cx = e.clientX / window.innerWidth - 0.5;
+    const cy = e.clientY / window.innerHeight - 0.5;
+    document.querySelectorAll('.h1-layer').forEach((l,i) => {
+      const depth = (i+1) * 0.8;
+      l.style.transform = `translate(${cx*depth*8}px, ${cy*depth*5}px)`;
+    });
+    document.querySelectorAll('.fcard').forEach((c,i) => {
+      const d = (i+1)*0.5;
+      c.style.transform = `translateY(${[0,-20,10,-5][i]||0}px) rotate(${[-3,0,2,-1][i]||0}deg) translate(${cx*d*5}px,${cy*d*3}px)`;
+    });
+  });
+</script>
+</body>
+</html>
