@@ -1,1 +1,98 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Forum Index</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#ece7dd;color:#171410;font-family:Inter,sans-serif}.wrap{width:min(1180px,calc(100% - 2rem));margin:0 auto;padding:2rem 0 4rem}.hero{display:grid;grid-template-columns:1fr .95fr;gap:2rem;align-items:center}.hero h1{margin:0;font-family:"Instrument Serif",serif;font-size:clamp(3.2rem,7vw,5.6rem);line-height:.94;max-width:8ch}.hero p{max-width:33rem;color:#5d544b;line-height:1.9}.list{display:grid;gap:.8rem}.item{padding:1rem;border:1px solid rgba(23,20,16,.1);border-radius:1.2rem;background:#faf7f0}@media(max-width:900px){.hero{grid-template-columns:1fr}}</style></head><body><main class="wrap"><section class="hero"><div><h1>Reduce the startup to the few topics a smart forum would actually debate.</h1><p>Forum Index is a less theatrical, more editorial cousin to the agenda-style concepts.</p></div><div class="list"><div class="item">Why this market, now?</div><div class="item">What makes the product believable?</div><div class="item">Why this team?</div></div></section></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Madrassi - Steampunk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      body { margin: 0; background: #292524; color: #fdba74; font-family: 'Playfair Display', serif; }
+      .wrapper { display: flex; min-height: 100vh; }
+      .left { flex: 1.2; padding: 4rem; display: flex; flex-direction: column; }
+      .right { flex: 0.8; background: #b45309; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+      
+      nav { display: flex; justify-content: space-between; margin-bottom: 6rem; align-items: center; }
+      .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+      .nav-links { display: flex; gap: 2rem; }
+      .nav-links a { color: #fdba74; text-decoration: none; font-weight: 600; opacity: 0.6; }
+      .nav-links a:hover { opacity: 1; color: #b45309; }
+      
+      .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+      .eyebrow { color: #b45309; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; font-size: 0.9rem; }
+      h1 { font-size: clamp(3rem, 6vw, 6rem); margin: 0 0 2rem 0; line-height: 1.05; letter-spacing: -0.03em; }
+      p.lead { font-size: 1.3rem; line-height: 1.6; opacity: 0.8; max-width: 500px; margin: 0 0 3rem 0; }
+      
+      .actions { display: flex; gap: 1.5rem; }
+      .btn { padding: 1.2rem 3rem; font-weight: 700; font-size: 1.1rem; text-decoration: none; border-radius: 0px; display: inline-block; }
+      .btn-primary { background: #fdba74; color: #292524; }
+      .btn-secondary { border: 2px solid #fdba7444; color: #fdba74; }
+      
+      .right-shape { width: 150%; height: 150%; border-radius: 40%; background: #292524; opacity: 0.15; position: absolute; animation: rotate 20s linear infinite; }
+      @keyframes rotate { 100% { transform: rotate(360deg); } }
+      .right-content { position: relative; z-index: 10; color: #292524; padding: 3rem; }
+      .right-content h2 { font-size: 3rem; margin: 0 0 1rem; }
+      
+      .services { padding: 6rem 4rem; background: #fdba7405; }
+      .services h2 { font-size: 3rem; margin: 0 0 4rem; }
+      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+      .service-item { border-left: 3px solid #b45309; padding-left: 2rem; }
+      .service-item h3 { font-size: 1.8rem; margin: 0 0 1rem; }
+      .service-item p { opacity: 0.7; line-height: 1.6; }
+    </style>
+    <div class="wrapper">
+      <div class="left">
+        <nav>
+          <div class="logo">Leo Madrassi</div>
+          <div class="nav-links">
+            <a href="#">Index</a>
+            <a href="#">Studio</a>
+            <a href="#">Contact</a>
+          </div>
+        </nav>
+        <div class="hero">
+          <div class="eyebrow">Steampunk</div>
+          <h1>Brass & Code</h1>
+          <p class="lead">Mechanics of the modern web. A deep dive into digital craftsmanship, pushing the boundaries of web experiences.</p>
+          <div class="actions">
+            <a href="#" class="btn btn-primary">Start Project</a>
+            <a href="#" class="btn btn-secondary">Explore Archive</a>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="right-shape"></div>
+        <div class="right-content">
+          <h2>Creative<br>Engineering</h2>
+          <p style="font-size: 1.2rem; opacity: 0.8; max-width: 300px;">Bridging the gap between ambitious design and flawless technical execution.</p>
+        </div>
+      </div>
+    </div>
+    <section class="services">
+      <h2>Capabilities</h2>
+      <div class="grid">
+        <div class="service-item">
+          <h3>Interactive WebGL</h3>
+          <p>Immersive 3D experiences built directly for the browser, optimizing performance without losing visual fidelity.</p>
+        </div>
+        <div class="service-item">
+          <h3>Design Systems</h3>
+          <p>Robust, scalable, and token-based component libraries that empower teams to build faster.</p>
+        </div>
+        <div class="service-item">
+          <h3>Technical Direction</h3>
+          <p>Guiding engineering teams to adopt modern stacks, ensuring architecture aligns with business goals.</p>
+        </div>
+        <div class="service-item">
+          <h3>Brand Identity</h3>
+          <p>Translating core brand values into cohesive visual languages and digital touchpoints.</p>
+        </div>
+      </div>
+    </section>
+  
+</body>
+</html>

@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Treaty Wall</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#f0ede6;color:#181410;font-family:Inter,sans-serif}main{width:min(1180px,calc(100% - 2rem));margin:0 auto;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}.copy h1{margin:0;font-family:"Libre Baskerville",serif;font-size:clamp(3.3rem,7vw,5.8rem);line-height:.94;max-width:8ch}.copy p{max-width:33rem;color:#5b534a;line-height:1.9}.wall{padding:1rem;border:1px solid rgba(24,20,16,.12);border-radius:1.8rem;background:#fbf8f2;display:grid;gap:.8rem}.bar{padding:1rem;border-radius:1rem;background:#fff;border:1px solid rgba(24,20,16,.08)}@media(max-width:900px){main{grid-template-columns:1fr;padding:2rem 0}}</style></head><body><main><div class="copy"><h1>Let the startup read like a wall of agreed terms.</h1><p>Treaty Wall is flatter and more public than Treaty Table. It feels declarative and negotiated.</p></div><div class="wall"><div class="bar">The startup exists because the current market agreement is broken.</div><div class="bar">The product is the new term people accept.</div><div class="bar">The interface is the signature line.</div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Madrassi - Retro Wave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      body { margin: 0; background: #2e1065; color: #fbcfe8; font-family: 'Space Mono', monospace; overflow-x: hidden; }
+      nav { display: flex; justify-content: space-between; padding: 1.5rem 4rem; border-bottom: 1px solid #d946ef33; }
+      .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; color: #d946ef; }
+      .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+      .nav-links a { color: #fbcfe8; text-decoration: none; opacity: 0.7; font-weight: 500; transition: 0.2s; }
+      .nav-links a:hover { opacity: 1; color: #d946ef; }
+      .cta-btn { background: #d946ef; color: #2e1065; padding: 0.6rem 1.5rem; border-radius: 2rem; font-weight: 700; text-decoration: none; }
+      
+      .hero { text-align: center; padding: 8rem 2rem; position: relative; }
+      .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, #d946ef22 0%, transparent 70%); z-index: -1; pointer-events: none; }
+      .pill { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 2rem; border: 1px solid #d946ef66; color: #d946ef; margin-bottom: 2rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+      h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); margin: 0 auto 1.5rem; line-height: 1.05; letter-spacing: -0.04em; max-width: 900px; }
+      .hero p { font-size: 1.25rem; line-height: 1.6; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem; }
+      .btn-group { display: flex; gap: 1rem; justify-content: center; }
+      .btn-primary { background: #d946ef; color: #2e1065; padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.2s; }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px #d946ef44; }
+      .btn-secondary { background: transparent; color: #fbcfe8; padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600; font-size: 1.1rem; border: 1px solid #fbcfe844; cursor: pointer; transition: 0.2s; }
+      .btn-secondary:hover { border-color: #d946ef; color: #d946ef; }
+
+      .stats { display: flex; border-top: 1px solid #fbcfe822; border-bottom: 1px solid #fbcfe822; max-width: 1200px; margin: 0 auto 6rem; }
+      .stat { flex: 1; padding: 3rem 2rem; text-align: center; border-right: 1px solid #fbcfe822; }
+      .stat:last-child { border-right: none; }
+      .stat h3 { font-size: 3rem; margin: 0; color: #d946ef; font-weight: 800; }
+      .stat p { margin: 0.5rem 0 0; opacity: 0.6; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto 8rem; padding: 0 2rem; }
+      .card { background: #fbcfe808; border: 1px solid #fbcfe811; padding: 3rem; border-radius: 24px; transition: 0.3s; }
+      .card:hover { transform: translateY(-10px); border-color: #d946ef66; background: #d946ef11; }
+      .icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+      .card h3 { font-size: 1.5rem; margin: 0 0 1rem; }
+      .card p { opacity: 0.7; line-height: 1.7; margin: 0 0 2rem; }
+      .tag { display: inline-block; padding: 0.3rem 0.8rem; background: #d946ef22; color: #d946ef; border-radius: 1rem; font-size: 0.8rem; font-weight: 700; }
+    </style>
+    <nav>
+      <div class="logo">Leo Madrassi</div>
+      <ul class="nav-links">
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="cta-btn">Hire Me</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <div class="pill">Retro Wave Concept</div>
+      <h1>SYNTH//WAVE</h1>
+      <p>Nostalgic futures built by Leo Madrassi.</p>
+      <div class="btn-group">
+        <button class="btn-primary">View Projects</button>
+        <button class="btn-secondary">Read Manifesto</button>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="stat"><h3>10+</h3><p>Years Experience</p></div>
+      <div class="stat"><h3>40</h3><p>Products Launched</p></div>
+      <div class="stat"><h3>99%</h3><p>Client Success</p></div>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <div class="icon">⚡️</div>
+        <h3>Rapid Prototyping</h3>
+        <p>From concept to interactive prototype in days, not weeks. Speed without sacrificing quality.</p>
+        <div class="tag">Design Engineering</div>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Systems Thinking</h3>
+        <p>Building scalable design systems that grow with your product and maintain visual consistency.</p>
+        <div class="tag">Architecture</div>
+      </div>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Polished UI/UX</h3>
+        <p>Obsessive attention to detail, micro-interactions, and motion design that delights users.</p>
+        <div class="tag">Product Design</div>
+      </div>
+    </section>
+  
+</body>
+</html>

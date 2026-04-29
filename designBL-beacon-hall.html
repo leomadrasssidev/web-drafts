@@ -1,1 +1,80 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Beacon Hall</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#14181f;color:#f6f7fb;font-family:Inter,sans-serif}main{width:min(1160px,calc(100% - 2rem));margin:0 auto;min-height:100vh;display:grid;grid-template-columns:1fr .95fr;gap:2rem;align-items:center}.copy h1{margin:0;font-family:Prata,serif;font-size:clamp(3.4rem,7vw,5.8rem);line-height:.94;max-width:8ch}.copy p{max-width:33rem;color:#c1c8d7;line-height:1.9}.hall{aspect-ratio:4/5;border-radius:2rem;background:linear-gradient(180deg,#1e2531,#10151d);position:relative;overflow:hidden}.hall:before{content:"";position:absolute;left:50%;top:12%;width:26%;height:52%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(255,230,176,.34),transparent 70%)}.hall:after{content:"";position:absolute;left:18%;right:18%;bottom:14%;height:16%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%)}@media(max-width:900px){main{grid-template-columns:1fr;padding:2rem 0}}</style></head><body><main><div class="copy"><h1>Give the startup a beacon at the end of a dark hall.</h1><p>Beacon Hall is simple but memorable. It suggests direction, arrival, and singular focus.</p></div><div class="hall"></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Madrassi - Industrial Core</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      body { margin: 0; background: #27272a; color: #a1a1aa; font-family: 'Inter', sans-serif; }
+      header { border-bottom: 1px solid #a1a1aa44; padding: 1.5rem 3rem; display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; font-weight: 700; }
+      
+      .main-grid { display: grid; grid-template-columns: 3fr 1fr; border-bottom: 1px solid #a1a1aa44; min-height: 80vh; }
+      
+      .content { padding: 6rem 4rem; border-right: 1px solid #a1a1aa44; }
+      .meta { color: #f4f4f5; font-weight: bold; margin-bottom: 2rem; display: block; }
+      h1 { font-size: clamp(4rem, 8vw, 8rem); margin: 0 0 2rem; line-height: 0.9; font-weight: 400; }
+      p.dropcap::first-letter { font-size: 5rem; float: left; line-height: 0.8; padding-right: 1rem; color: #f4f4f5; }
+      p.large { font-size: 1.5rem; line-height: 1.8; opacity: 0.9; max-width: 800px; }
+      
+      .sidebar { padding: 4rem 3rem; background: #a1a1aa05; }
+      .sidebar h3 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; border-bottom: 1px solid #a1a1aa44; padding-bottom: 1rem; }
+      .side-nav { list-style: none; padding: 0; margin: 0 0 4rem; }
+      .side-nav li { margin-bottom: 1rem; }
+      .side-nav a { color: #a1a1aa; text-decoration: none; font-size: 1.2rem; transition: 0.2s; }
+      .side-nav a:hover { color: #f4f4f5; padding-left: 0.5rem; }
+      
+      .info-block { margin-bottom: 3rem; }
+      .info-block span { display: block; opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+      .info-block strong { font-size: 1.1rem; }
+      
+      .gallery { display: grid; grid-template-columns: repeat(3, 1fr); padding: 4rem; gap: 2rem; }
+      .gallery-img { aspect-ratio: 4/5; background: #a1a1aa11; position: relative; overflow: hidden; }
+      .gallery-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #27272a, transparent); opacity: 0.8; }
+      .gallery-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; font-weight: bold; font-size: 1.2rem; z-index: 10; }
+    </style>
+    <header>
+      <div>Leo Madrassi — Industrial Core</div>
+      <div>Vol. 01 / Selected Works</div>
+    </header>
+    <div class="main-grid">
+      <div class="content">
+        <span class="meta">Independent Design Practice</span>
+        <h1>Industrial Grade</h1>
+        <p class="dropcap large">Robust solutions engineered by Leo Madrassi. This approach focuses on rigorous typography, stark contrasts, and meaningful negative space to let the work speak for itself.</p>
+        <div style="margin-top: 4rem;">
+           <a href="#" style="background: #f4f4f5; color: #27272a; padding: 1rem 3rem; text-decoration: none; font-weight: bold; display: inline-block;">View Case Studies</a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <h3>Directory</h3>
+        <ul class="side-nav">
+          <li><a href="#">01. Manifesto</a></li>
+          <li><a href="#">02. Archive</a></li>
+          <li><a href="#">03. Journal</a></li>
+          <li><a href="#">04. Contact</a></li>
+        </ul>
+        
+        <div class="info-block">
+          <span>Current Status</span>
+          <strong>Accepting Projects</strong>
+        </div>
+        <div class="info-block">
+          <span>Location</span>
+          <strong>Global / Remote</strong>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-img"><div class="gallery-caption">Brand Identity</div></div>
+      <div class="gallery-img"><div class="gallery-caption">Digital Platforms</div></div>
+      <div class="gallery-img"><div class="gallery-caption">Art Direction</div></div>
+    </div>
+  
+</body>
+</html>

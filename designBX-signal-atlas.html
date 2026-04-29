@@ -1,1 +1,80 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Signal Atlas</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Marcellus&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#0b1219;color:#eef6fa;font-family:Outfit,sans-serif}main{width:min(1180px,calc(100% - 2rem));margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;min-height:100vh}.copy h1{margin:0;font-family:Marcellus,serif;font-size:clamp(3.4rem,7vw,5.8rem);line-height:.94;max-width:8ch}.copy p{max-width:33rem;color:#c0d0d8;line-height:1.9}.map{aspect-ratio:1;border-radius:2rem;border:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem}.zone{border:1px solid rgba(255,255,255,.08);border-radius:1.2rem;padding:1rem;background:rgba(255,255,255,.03)}@media(max-width:900px){main,.map{grid-template-columns:1fr;padding:2rem 0}}</style></head><body><main><div class="copy"><h1>Chart the company as an atlas of live signals.</h1><p>Signal Atlas is useful when the startup is better explained as interacting fields than a single proposition.</p></div><div class="map"><div class="zone">Vision</div><div class="zone">Product</div><div class="zone">Proof</div><div class="zone">Founder</div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Madrassi - Art Deco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      body { margin: 0; background: #111827; color: #fef3c7; font-family: 'Playfair Display', serif; }
+      header { border-bottom: 1px solid #fef3c744; padding: 1.5rem 3rem; display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; font-weight: 700; }
+      
+      .main-grid { display: grid; grid-template-columns: 3fr 1fr; border-bottom: 1px solid #fef3c744; min-height: 80vh; }
+      
+      .content { padding: 6rem 4rem; border-right: 1px solid #fef3c744; }
+      .meta { color: #d97706; font-weight: bold; margin-bottom: 2rem; display: block; }
+      h1 { font-size: clamp(4rem, 8vw, 8rem); margin: 0 0 2rem; line-height: 0.9; font-weight: 400; }
+      p.dropcap::first-letter { font-size: 5rem; float: left; line-height: 0.8; padding-right: 1rem; color: #d97706; }
+      p.large { font-size: 1.5rem; line-height: 1.8; opacity: 0.9; max-width: 800px; }
+      
+      .sidebar { padding: 4rem 3rem; background: #fef3c705; }
+      .sidebar h3 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; border-bottom: 1px solid #fef3c744; padding-bottom: 1rem; }
+      .side-nav { list-style: none; padding: 0; margin: 0 0 4rem; }
+      .side-nav li { margin-bottom: 1rem; }
+      .side-nav a { color: #fef3c7; text-decoration: none; font-size: 1.2rem; transition: 0.2s; }
+      .side-nav a:hover { color: #d97706; padding-left: 0.5rem; }
+      
+      .info-block { margin-bottom: 3rem; }
+      .info-block span { display: block; opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+      .info-block strong { font-size: 1.1rem; }
+      
+      .gallery { display: grid; grid-template-columns: repeat(3, 1fr); padding: 4rem; gap: 2rem; }
+      .gallery-img { aspect-ratio: 4/5; background: #fef3c711; position: relative; overflow: hidden; }
+      .gallery-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #111827, transparent); opacity: 0.8; }
+      .gallery-caption { position: absolute; bottom: 1.5rem; left: 1.5rem; font-weight: bold; font-size: 1.2rem; z-index: 10; }
+    </style>
+    <header>
+      <div>Leo Madrassi — Art Deco</div>
+      <div>Vol. 01 / Selected Works</div>
+    </header>
+    <div class="main-grid">
+      <div class="content">
+        <span class="meta">Independent Design Practice</span>
+        <h1>Golden Age</h1>
+        <p class="dropcap large">Timeless elegance in modern code. This approach focuses on rigorous typography, stark contrasts, and meaningful negative space to let the work speak for itself.</p>
+        <div style="margin-top: 4rem;">
+           <a href="#" style="background: #d97706; color: #111827; padding: 1rem 3rem; text-decoration: none; font-weight: bold; display: inline-block;">View Case Studies</a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <h3>Directory</h3>
+        <ul class="side-nav">
+          <li><a href="#">01. Manifesto</a></li>
+          <li><a href="#">02. Archive</a></li>
+          <li><a href="#">03. Journal</a></li>
+          <li><a href="#">04. Contact</a></li>
+        </ul>
+        
+        <div class="info-block">
+          <span>Current Status</span>
+          <strong>Accepting Projects</strong>
+        </div>
+        <div class="info-block">
+          <span>Location</span>
+          <strong>Global / Remote</strong>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-img"><div class="gallery-caption">Brand Identity</div></div>
+      <div class="gallery-img"><div class="gallery-caption">Digital Platforms</div></div>
+      <div class="gallery-img"><div class="gallery-caption">Art Direction</div></div>
+    </div>
+  
+</body>
+</html>

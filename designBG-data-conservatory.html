@@ -1,1 +1,92 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Conservatory</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;background:#edf2ec;color:#171915;font-family:Inter,sans-serif}main{width:min(1180px,calc(100% - 2rem));margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;min-height:100vh}.copy h1{margin:0;font-family:Prata,serif;font-size:clamp(3.2rem,7vw,5.8rem);line-height:.95;max-width:8ch}.copy p{max-width:33rem;color:#576055;line-height:1.9}.glass{aspect-ratio:4/5;border-radius:2rem;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.2));border:1px solid rgba(23,25,21,.1);padding:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}.pane{border-radius:1.2rem;background:rgba(255,255,255,.55);border:1px solid rgba(23,25,21,.08);padding:1rem}.pane strong{display:block;margin-bottom:.35rem}.pane span{color:#596257;line-height:1.7}@media(max-width:900px){main{grid-template-columns:1fr;padding:2rem 0}}</style></head><body><main><div class="copy"><h1>Treat the startup like a conservatory for cultivated data.</h1><p>This concept softens intelligence without losing seriousness. It feels tended, deliberate, and quietly premium.</p></div><div class="glass"><div class="pane"><strong>Signal growth</strong><span>Metrics are treated like living evidence.</span></div><div class="pane"><strong>Best fit</strong><span>Climate, health, education, or humane AI.</span></div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Madrassi - Neon Nights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+      body { margin: 0; background: #0f172a; color: #f8fafc; font-family: 'Syne', sans-serif; overflow-x: hidden; }
+      nav { display: flex; justify-content: space-between; padding: 1.5rem 4rem; border-bottom: 1px solid #8b5cf633; }
+      .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; color: #8b5cf6; }
+      .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+      .nav-links a { color: #f8fafc; text-decoration: none; opacity: 0.7; font-weight: 500; transition: 0.2s; }
+      .nav-links a:hover { opacity: 1; color: #8b5cf6; }
+      .cta-btn { background: #8b5cf6; color: #0f172a; padding: 0.6rem 1.5rem; border-radius: 2rem; font-weight: 700; text-decoration: none; }
+      
+      .hero { text-align: center; padding: 8rem 2rem; position: relative; }
+      .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, #8b5cf622 0%, transparent 70%); z-index: -1; pointer-events: none; }
+      .pill { display: inline-block; padding: 0.4rem 1.2rem; border-radius: 2rem; border: 1px solid #8b5cf666; color: #8b5cf6; margin-bottom: 2rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+      h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); margin: 0 auto 1.5rem; line-height: 1.05; letter-spacing: -0.04em; max-width: 900px; }
+      .hero p { font-size: 1.25rem; line-height: 1.6; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem; }
+      .btn-group { display: flex; gap: 1rem; justify-content: center; }
+      .btn-primary { background: #8b5cf6; color: #0f172a; padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.2s; }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px #8b5cf644; }
+      .btn-secondary { background: transparent; color: #f8fafc; padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600; font-size: 1.1rem; border: 1px solid #f8fafc44; cursor: pointer; transition: 0.2s; }
+      .btn-secondary:hover { border-color: #8b5cf6; color: #8b5cf6; }
+
+      .stats { display: flex; border-top: 1px solid #f8fafc22; border-bottom: 1px solid #f8fafc22; max-width: 1200px; margin: 0 auto 6rem; }
+      .stat { flex: 1; padding: 3rem 2rem; text-align: center; border-right: 1px solid #f8fafc22; }
+      .stat:last-child { border-right: none; }
+      .stat h3 { font-size: 3rem; margin: 0; color: #8b5cf6; font-weight: 800; }
+      .stat p { margin: 0.5rem 0 0; opacity: 0.6; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto 8rem; padding: 0 2rem; }
+      .card { background: #f8fafc08; border: 1px solid #f8fafc11; padding: 3rem; border-radius: 24px; transition: 0.3s; }
+      .card:hover { transform: translateY(-10px); border-color: #8b5cf666; background: #8b5cf611; }
+      .icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+      .card h3 { font-size: 1.5rem; margin: 0 0 1rem; }
+      .card p { opacity: 0.7; line-height: 1.7; margin: 0 0 2rem; }
+      .tag { display: inline-block; padding: 0.3rem 0.8rem; background: #8b5cf622; color: #8b5cf6; border-radius: 1rem; font-size: 0.8rem; font-weight: 700; }
+    </style>
+    <nav>
+      <div class="logo">Leo Madrassi</div>
+      <ul class="nav-links">
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="cta-btn">Hire Me</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <div class="pill">Neon Nights Concept</div>
+      <h1>Future Forward</h1>
+      <p>Pushing boundaries in digital experiences.</p>
+      <div class="btn-group">
+        <button class="btn-primary">View Projects</button>
+        <button class="btn-secondary">Read Manifesto</button>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="stat"><h3>10+</h3><p>Years Experience</p></div>
+      <div class="stat"><h3>40</h3><p>Products Launched</p></div>
+      <div class="stat"><h3>99%</h3><p>Client Success</p></div>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <div class="icon">⚡️</div>
+        <h3>Rapid Prototyping</h3>
+        <p>From concept to interactive prototype in days, not weeks. Speed without sacrificing quality.</p>
+        <div class="tag">Design Engineering</div>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Systems Thinking</h3>
+        <p>Building scalable design systems that grow with your product and maintain visual consistency.</p>
+        <div class="tag">Architecture</div>
+      </div>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Polished UI/UX</h3>
+        <p>Obsessive attention to detail, micro-interactions, and motion design that delights users.</p>
+        <div class="tag">Product Design</div>
+      </div>
+    </section>
+  
+</body>
+</html>
