@@ -1,88 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Draft Overview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box}
-  body{
-    margin:0;font-family:"Manrope",sans-serif;color:#eef6f9;background:#081018;
-    background-image:radial-gradient(circle at 20% 0%, rgba(115,255,196,.1), transparent 20%),radial-gradient(circle at 80% 20%, rgba(255,119,77,.08), transparent 22%);
-  }
-  main{width:min(1180px,calc(100% - 2rem));margin:0 auto;padding:3rem 0 4rem}
-  h1{font-size:clamp(2.8rem,6vw,5rem);line-height:.95;letter-spacing:-.05em;margin:0}
-  p{max-width:42rem;color:rgba(238,246,249,.7);line-height:1.8}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:2rem}
-  a{
-    display:block;padding:1.2rem;border-radius:1.2rem;text-decoration:none;color:#eef6f9;
-    border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);
-    transition:transform .18s ease,border-color .18s ease;
-    position:relative;
-  }
-  a:hover{transform:translateY(-3px);border-color:rgba(115,255,196,.35)}
-  .hide-btn{
-    position:absolute;top:0.6rem;right:0.6rem;
-    background:rgba(255,119,77,.15);color:#ff774d;
-    border:none;border-radius:50%;width:26px;height:26px;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;opacity:0;transition:opacity 0.2s, background 0.2s;
-    font-size:1.2rem;line-height:1;
-  }
-  a:hover .hide-btn{opacity:1;}
-  .hide-btn:hover{background:rgba(255,119,77,.6);color:#fff;}
-  .controls{display:flex;align-items:center;margin-top:1.5rem;height:35px;}
-  .reset-btn{
-    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);
-    color:#eef6f9;padding:0.4rem 1rem;border-radius:0.5rem;cursor:pointer;
-    font-family:inherit;font-size:0.9rem;transition:background 0.2s;
-    display:none;
-  }
-  .reset-btn:hover{background:rgba(255,255,255,.1);}
-  strong{display:block;font-size:1.02rem;margin-bottom:.4rem;padding-right:1.5rem;}
-  span{color:rgba(238,246,249,.66);line-height:1.65;font-size:.94rem}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draft Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: #eef6f9;
+      background: #081018;
+      background-image: radial-gradient(circle at 20% 0%, rgba(115, 255, 196, .1), transparent 20%), radial-gradient(circle at 80% 20%, rgba(255, 119, 77, .08), transparent 22%);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3rem 0 4rem
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.05em;
+      margin: 0
+    }
+
+    p {
+      max-width: 42rem;
+      color: rgba(238, 246, 249, .7);
+      line-height: 1.8
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem
+    }
+
+    a {
+      display: block;
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      text-decoration: none;
+      color: #eef6f9;
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: rgba(255, 255, 255, .04);
+      transition: transform .18s ease, border-color .18s ease;
+      position: relative;
+    }
+
+    a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(115, 255, 196, .35)
+    }
+
+    .hide-btn {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: rgba(255, 119, 77, .15);
+      color: #ff774d;
+      border: none;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    a:hover .hide-btn {
+      opacity: 1;
+    }
+
+    .hide-btn:hover {
+      background: rgba(255, 119, 77, .6);
+      color: #fff;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      height: 35px;
+    }
+
+    .reset-btn {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #eef6f9;
+      padding: 0.4rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      display: none;
+    }
+
+    .reset-btn:hover {
+      background: rgba(255, 255, 255, .1);
+    }
+
+    strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: .4rem;
+      padding-right: 1.5rem;
+    }
+
+    span {
+      color: rgba(238, 246, 249, .66);
+      line-height: 1.65;
+      font-size: .94rem
+    }
+  </style>
 </head>
+
 <body>
   <main>
     <h1>Draft stack for your startup brand.</h1>
-    <p>`index.html` is preserved as the Helix concept. This page now tracks the full shelf: local drafts, inherited drafts, and the two outside references you asked to include, so the list totals one hundred entries.</p>
+    <p>`index.html` is preserved as the Helix concept. This page now tracks the full shelf: local drafts, inherited
+      drafts, and the two outside references you asked to include, so the list totals one hundred entries.</p>
     <div class="grid">
-      <a href="index.html"><strong>index.html / Helix Venture Systems</strong><span>Signal-first flagship concept with animated founder dashboard.</span></a>
-      <a href="https://www.zyroxhosting.in" target="_blank" rel="noopener noreferrer"><strong>Zyrox Hosting</strong><span>External reference added to the overview per request.</span></a>
-      <a href="https://www.digitalocean.com" target="_blank" rel="noopener noreferrer"><strong>DigitalOcean</strong><span>External reference added to the overview per request.</span></a>
+      <a href="index.html"><strong>index.html / Helix Venture Systems</strong><span>Signal-first flagship concept with
+          animated founder dashboard.</span></a>
 
-      <a href="design2-glassmorphism-cosmos.html"><strong>Design 2 / Glass Cosmos</strong><span>Futurist, soft-glass, atmospheric.</span></a>
+      <a href="design2-glassmorphism-cosmos.html"><strong>Design 2 / Glass Cosmos</strong><span>Futurist, soft-glass,
+          atmospheric.</span></a>
 
-      <a href="designB-forge-ember.html"><strong>Design B / Forge Ember</strong><span>Warm industrial operator tone.</span></a>
-      <a href="designC-mycel-bioluminescent.html"><strong>Design C / Mycel</strong><span>Organic, bioluminescent, research-tech.</span></a>
-      <a href="designD-axiom-noir.html"><strong>Design D / Axiom Noir</strong><span>Crimson noir and sharp authority.</span></a>
-      <a href="designE-strata-indigo.html"><strong>Design E / Strata Indigo</strong><span>Deeper strategy-led enterprise feel.</span></a>
-      <a href="designF-crome-chrome.html"><strong>Design F / Crome Chrome</strong><span>Reflective, metallic, fashion-tech edge.</span></a>
-      <a href="designG-terra-organic.html"><strong>Design G / Terra Organic</strong><span>Earth-tech and tactile softness.</span></a>
-      <a href="designH-prism-electric.html"><strong>Design H / Prism Electric</strong><span>Electric blue SaaS with sharp glow.</span></a>
+      <a href="designB-forge-ember.html"><strong>Design B / Forge Ember</strong><span>Warm industrial operator
+          tone.</span></a>
+      <a href="designC-mycel-bioluminescent.html"><strong>Design C / Mycel</strong><span>Organic, bioluminescent,
+          research-tech.</span></a>
+      <a href="designD-axiom-noir.html"><strong>Design D / Axiom Noir</strong><span>Crimson noir and sharp
+          authority.</span></a>
+      <a href="designE-strata-indigo.html"><strong>Design E / Strata Indigo</strong><span>Deeper strategy-led enterprise
+          feel.</span></a>
+      <a href="designF-crome-chrome.html"><strong>Design F / Crome Chrome</strong><span>Reflective, metallic,
+          fashion-tech edge.</span></a>
+      <a href="designG-terra-organic.html"><strong>Design G / Terra Organic</strong><span>Earth-tech and tactile
+          softness.</span></a>
+      <a href="designH-prism-electric.html"><strong>Design H / Prism Electric</strong><span>Electric blue SaaS with
+          sharp glow.</span></a>
 
-      <a href="designL-atelier-zero.html"><strong>Design L / Atelier Zero</strong><span>Quiet luxury black-and-gold founder brand.</span></a>
-      <a href="designM-afterglow-grid.html"><strong>Design M / Afterglow Grid</strong><span>Hot neon editorial grid with launch-campaign energy.</span></a>
+      <a href="designL-atelier-zero.html"><strong>Design L / Atelier Zero</strong><span>Quiet luxury black-and-gold
+          founder brand.</span></a>
+      <a href="designM-afterglow-grid.html"><strong>Design M / Afterglow Grid</strong><span>Hot neon editorial grid with
+          launch-campaign energy.</span></a>
 
-      <a href="designAA-infinite-canvas.html"><strong>Design AA / Infinite Canvas</strong><span>Spatial whiteboard-style startup map.</span></a>
+      <a href="designAA-infinite-canvas.html"><strong>Design AA / Infinite Canvas</strong><span>Spatial whiteboard-style
+          startup map.</span></a>
 
-      <a href="designAG-desktop-os.html"><strong>Design AG / Desktop OS</strong><span>Multi-window operating-system startup environment.</span></a>
+      <a href="designAG-desktop-os.html"><strong>Design AG / Desktop OS</strong><span>Multi-window operating-system
+          startup environment.</span></a>
 
-      <a href="designBE-archive-spine.html"><strong>Brutalist Mono</strong><span>Unapologetic design and raw code.</span></a>
+      <a href="designBE-archive-spine.html"><strong>Brutalist Mono</strong><span>Unapologetic design and raw
+          code.</span></a>
 
-      <a href="designBG-data-conservatory.html"><strong>Neon Nights</strong><span>Pushing boundaries in digital experiences.</span></a>
+      <a href="designBG-data-conservatory.html"><strong>Neon Nights</strong><span>Pushing boundaries in digital
+          experiences.</span></a>
 
-      <a href="designBL-beacon-hall.html"><strong>Industrial Core</strong><span>Robust solutions engineered by Leo Madrassi.</span></a>
+      <a href="designBL-beacon-hall.html"><strong>Industrial Core</strong><span>Robust solutions engineered by Leo
+          Madrassi.</span></a>
 
-      <a href="designBN-relay-mesh.html"><strong>Ocean Depth</strong><span>Exploring the depths of interactive design.</span></a>
+      <a href="designBN-relay-mesh.html"><strong>Ocean Depth</strong><span>Exploring the depths of interactive
+          design.</span></a>
 
-      <a href="designBP-atlas-strip.html"><strong>Monochrome Vault</strong><span>Archived projects of Leo Madrassi.</span></a>
+      <a href="designBP-atlas-strip.html"><strong>Monochrome Vault</strong><span>Archived projects of Leo
+          Madrassi.</span></a>
 
-      <a href="designBR-treaty-wall.html"><strong>Retro Wave</strong><span>Nostalgic futures built by Leo Madrassi.</span></a>
+      <a href="designBR-treaty-wall.html"><strong>Retro Wave</strong><span>Nostalgic futures built by Leo
+          Madrassi.</span></a>
 
       <a href="designBT-pilot-log.html"><strong>Acid Green</strong><span>Loud, proud, and accessible.</span></a>
 
@@ -93,63 +197,66 @@
       <a href="designCD-forum-index.html"><strong>Steampunk</strong><span>Mechanics of the modern web.</span></a>
       <a href="designCE-axis-room.html"><strong>Glitch Art</strong><span>Embracing the chaos of the internet.</span></a>
 
-      <a href="designCH-proof-cabinet.html"><strong>Neon Grid</strong><span>Structured data and beautiful interfaces.</span></a>
+      <a href="designCH-proof-cabinet.html"><strong>Neon Grid</strong><span>Structured data and beautiful
+          interfaces.</span></a>
 
-      <a href="designCJ-paper-runway.html"><strong>Dark academia</strong><span>Deep research and thoughtful execution.</span></a>
+      <a href="designCJ-paper-runway.html"><strong>Dark academia</strong><span>Deep research and thoughtful
+          execution.</span></a>
 
     </div>
   </main>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.grid');
-  const links = grid.querySelectorAll('a');
-  
-  const controls = document.createElement('div');
-  controls.className = 'controls';
-  controls.innerHTML = '<button class="reset-btn" id="resetHidden">Reset Hidden (<span id="hiddenCount">0</span>)</button>';
-  grid.parentNode.insertBefore(controls, grid);
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.querySelector('.grid');
+      const links = grid.querySelectorAll('a');
 
-  let hiddenDrafts = JSON.parse(localStorage.getItem('hiddenDrafts') || '[]');
-  
-  function updateCount() {
-    const countEl = document.getElementById('hiddenCount');
-    const resetBtn = document.getElementById('resetHidden');
-    if (countEl && resetBtn) {
-      countEl.textContent = hiddenDrafts.length;
-      resetBtn.style.display = hiddenDrafts.length > 0 ? 'inline-block' : 'none';
-    }
-  }
+      const controls = document.createElement('div');
+      controls.className = 'controls';
+      controls.innerHTML = '<button class="reset-btn" id="resetHidden">Reset Hidden (<span id="hiddenCount">0</span>)</button>';
+      grid.parentNode.insertBefore(controls, grid);
 
-  document.getElementById('resetHidden').addEventListener('click', () => {
-    hiddenDrafts = [];
-    localStorage.setItem('hiddenDrafts', JSON.stringify(hiddenDrafts));
-    links.forEach(link => link.style.display = 'block');
-    updateCount();
-  });
+      let hiddenDrafts = JSON.parse(localStorage.getItem('hiddenDrafts') || '[]');
 
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (hiddenDrafts.includes(href)) {
-      link.style.display = 'none';
-    }
+      function updateCount() {
+        const countEl = document.getElementById('hiddenCount');
+        const resetBtn = document.getElementById('resetHidden');
+        if (countEl && resetBtn) {
+          countEl.textContent = hiddenDrafts.length;
+          resetBtn.style.display = hiddenDrafts.length > 0 ? 'inline-block' : 'none';
+        }
+      }
 
-    const hideBtn = document.createElement('button');
-    hideBtn.className = 'hide-btn';
-    hideBtn.innerHTML = '×';
-    hideBtn.title = 'Hide this draft';
-    hideBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      hiddenDrafts.push(href);
-      localStorage.setItem('hiddenDrafts', JSON.stringify(hiddenDrafts));
-      link.style.display = 'none';
+      document.getElementById('resetHidden').addEventListener('click', () => {
+        hiddenDrafts = [];
+        localStorage.setItem('hiddenDrafts', JSON.stringify(hiddenDrafts));
+        links.forEach(link => link.style.display = 'block');
+        updateCount();
+      });
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (hiddenDrafts.includes(href)) {
+          link.style.display = 'none';
+        }
+
+        const hideBtn = document.createElement('button');
+        hideBtn.className = 'hide-btn';
+        hideBtn.innerHTML = '×';
+        hideBtn.title = 'Hide this draft';
+        hideBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          hiddenDrafts.push(href);
+          localStorage.setItem('hiddenDrafts', JSON.stringify(hiddenDrafts));
+          link.style.display = 'none';
+          updateCount();
+        });
+        link.appendChild(hideBtn);
+      });
+
       updateCount();
     });
-    link.appendChild(hideBtn);
-  });
-
-  updateCount();
-});
-</script>
+  </script>
 </body>
+
 </html>
